@@ -12,7 +12,7 @@ detectan lugares libres y ocupados por autos.
 * **Patricia Palmieri [Alumbrado inteligente :bulb:]:** Sensores de luz que prenden o apagan alumbrado
 según sea necesario.
 
-* Cuidado del espacio verde inteligente. Sensores de humedad que rieguen
+* **Agustín Garabito [Cuidado del espacio verde inteligente]:** Sensores de humedad que rieguen
 automáticamente el pasto si la humedad ambiente es baja.
 
 * Baños ocupados. Cámaras que detectan cuando un baño está siendo
