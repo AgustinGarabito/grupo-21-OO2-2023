@@ -1,0 +1,18 @@
+<form action="#" th:action="@{/dispositivo/update}" th:object="${dispositivo}"
+	method="post">
+	<input type="hidden" th:field="*{id}" />
+	</p>
+	<p>
+		Nombre: <input type="text" th:field="*{nombre}" />		
+	</p>
+	<p>
+		Nro Sector: <input type="number" th:field="*{nroSector}" />		
+	</p>
+	<p>
+		Activo: <input type="checkbox" th:field="*{activo}" />		
+	</p>
+		
+	<input type="submit" value="EDITAR" />
+</form>
+
+<a href="/index"><input type="button" value="HOME" /></a>

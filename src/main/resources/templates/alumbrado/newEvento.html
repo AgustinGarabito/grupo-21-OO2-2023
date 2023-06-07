@@ -1,0 +1,19 @@
+<form action="#" th:action="@{/alumbrado/newEvento}" th:object="${alumbrado}" method="post">
+	
+	<p>Nombre: <input type="text" th:field="*{nombre}" /></p>
+	<p>Nro Sector: <input type="number" th:field="*{nroSector}" /></p>	
+	<p>Activo: <input type="checkbox" th:field="*{activo}" /></p>	
+	<p>Valor Minimo: <input type="number" th:field="*{valorMinimo}" /></p>
+	<p>Valor Maximo: <input type="number" th:field="*{valorMaximo}" /></p>	
+	<p>Sensor Movimiento: <input type="checkbox" th:field="*{sensorMovimiento}" /></p>
+	<p>Medicion Sensor: <input type="number" th:field="*{medicionSensor}" /></p>
+	
+	<p>Descripcion: <input type="text" th:field="*{descripcion}" required/></p>
+	<p>Fecha: <input type="date" th:field="*{fecha}" required/></p>	
+	<p>Hora: <input type="time" th:field="*{hora}" required/></p>
+	
+		
+	<input type="submit" value="CREAR EVENTO"/>
+	
+</form>
+
