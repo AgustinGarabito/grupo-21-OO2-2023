@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,11 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.unla.grupo21.entities.AlumbradoInteligente;
 import com.unla.grupo21.entities.DispositivoIOT;
 import com.unla.grupo21.helpers.ViewRouteHelper;
 import com.unla.grupo21.models.DispositivoIOTModel;
 import com.unla.grupo21.services.IDispositivoIOTService;
+
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -49,14 +51,12 @@ public class DispositivoIOTController {
 	}
 	
 	
-	
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("dispositivo") DispositivoIOTModel dispositivoIOTModel) {
 		dispositivoIOTService.insertOrUpdate(modelMapper.map(dispositivoIOTModel, DispositivoIOT.class));
 		return new RedirectView(ViewRouteHelper.DISPOSITIVO_ROOT);
 	}
-
-
+	
 	@GetMapping("/{id}")
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DISPOSITIVO_UPDATE);

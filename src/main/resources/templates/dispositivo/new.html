@@ -1,7 +1,10 @@
 <form action="#" th:action="@{/dispositivo/create}" th:object="${dispositivo}" method="post">
 	
-	<p>Nombre: <input type="text" th:field="*{nombre}" /></p>
-	<p>Nro Sector: <input type="number" th:field="*{nroSector}" /></p>	
+	<p>Nombre: <input type="text" th:field="*{nombre}" required minlength="4" maxlength="50" /></p>
+	
+	
+	<p>Nro Sector: <input type="number" th:field="*{nroSector}" value="1" min="1" max="147" required/></p>
+		
 	<p>Activo: <input type="checkbox" th:field="*{activo}"/></p>
 		
 	<input type="submit" value="CREAR"/>

@@ -5,7 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,8 +17,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 @Entity
+@Table(name = "dispositivoiot")
+@SQLDelete(sql = "UPDATE dispositivoiot SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class DispositivoIOT {
 	
@@ -25,9 +33,14 @@ public class DispositivoIOT {
 	private int id;
 	
 	private String nombre;
+	
+	@Min(1)
+	@Max(147)
 	private int nroSector;
 	private boolean activo;
 	
+	
+	private boolean deleted = Boolean.FALSE;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;

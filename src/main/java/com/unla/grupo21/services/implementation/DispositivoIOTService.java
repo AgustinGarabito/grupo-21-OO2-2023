@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.unla.grupo21.entities.AlumbradoInteligente;
 import com.unla.grupo21.entities.DispositivoIOT;
 import com.unla.grupo21.models.DispositivoIOTModel;
 import com.unla.grupo21.repositories.IDispositivoIOTRepository;
 import com.unla.grupo21.services.IDispositivoIOTService;
+
 
 @Service("dispositivoIOTService")
 public class DispositivoIOTService implements IDispositivoIOTService{
@@ -65,5 +65,6 @@ public class DispositivoIOTService implements IDispositivoIOTService{
 		return dispositivoIOTRepository.findAll();
 	}
 	
-	
+	///////////
+	 
 }

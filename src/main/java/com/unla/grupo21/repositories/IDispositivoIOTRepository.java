@@ -23,7 +23,7 @@ public interface IDispositivoIOTRepository extends JpaRepository<DispositivoIOT,
 			+ "	LIKE %?1%")
 	public List<DispositivoIOT> findAll(String palabraClave);
 	
-	
+	  
 	
 
 }

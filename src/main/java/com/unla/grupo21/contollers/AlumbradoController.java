@@ -26,7 +26,7 @@ import com.unla.grupo21.services.IEventoService;
 
 
 @Controller
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
 @RequestMapping("/alumbrado")
 public class AlumbradoController {
 	
@@ -45,7 +45,7 @@ public class AlumbradoController {
 	private ModelMapper modelMapper = new ModelMapper();
 
 	
-
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@GetMapping("")
 	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ALUMBRADO_INDEX);
@@ -120,6 +120,7 @@ public class AlumbradoController {
 	}*/
 	
 	//filtro
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
 	@GetMapping("/eventos")
 	public String index2(Model modelo, @Param("palabraClave") String palabraClave) {
 		List<DispositivoIOT> lista = dispositivoIOTService.listAll(palabraClave);

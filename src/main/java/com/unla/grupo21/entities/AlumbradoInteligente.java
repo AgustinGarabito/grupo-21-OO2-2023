@@ -1,7 +1,8 @@
 package com.unla.grupo21.entities;
 
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
+
 
 @Entity
 public class AlumbradoInteligente extends DispositivoIOT{
@@ -10,6 +11,7 @@ public class AlumbradoInteligente extends DispositivoIOT{
 	private int valorMaximo;
 	private boolean sensorMovimiento;
 	private int medicionSensor;
+	
 	
 	public AlumbradoInteligente() {
 	}

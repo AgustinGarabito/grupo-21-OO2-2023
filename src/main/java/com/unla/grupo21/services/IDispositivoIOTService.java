@@ -2,9 +2,6 @@ package com.unla.grupo21.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.unla.grupo21.entities.AlumbradoInteligente;
 import com.unla.grupo21.entities.DispositivoIOT;
 import com.unla.grupo21.models.DispositivoIOTModel;
 
@@ -25,6 +22,8 @@ public interface IDispositivoIOTService {
 	////////////////
 	
 	public List<DispositivoIOT> listAll(String palabraClave);
+	
+	
 	
 	
 
