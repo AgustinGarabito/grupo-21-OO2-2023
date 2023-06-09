@@ -25,7 +25,6 @@ cortinas.
 * Recolectores inteligentes. Sensores que informen cuando un contenedor está
 lleno. Sensores que accionen limpiadores automáticos en zonas específicas.
 Cámaras que notifiquen de uso indebido del contenedor. Etc.
-* Etc. 
 
 2. Se puede asumir que se puede contar con el dispositivo IOT necesario para resolver
 la tarea física de la solución.
@@ -55,6 +54,9 @@ Se espera que en la plataforma como mínimo pueda:
     eventos en el sistema.
 5. Cerrar sesión
 
+### **Predio de la Universidad dividido por número por sectores**
+
+![imagen_predio](https://github.com/AgustinGarabito/grupo-21-OO2-2023/blob/main/Nro_de_sectores_del_predio.jpg)
 
 
 
