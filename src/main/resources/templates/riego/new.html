@@ -1,0 +1,8 @@
+<form action="#" th:action="@{/riego/create}" th:object="${riego}" method="post">
+	<p>Nombre: <input type="text" th:field="*{nombre}" /></p>
+	<p>Nro Sector: <input type="number" th:field="*{nroSector}" /></p>
+	<p>Humedad Minima: <input type="number" th:field="*{humedadMinima}" /></p>
+	<p>Humedad Maxima: <input type="number" th:field="*{humedadMaxima}" /></p>
+	
+	<input type="submit" value="Crear"/>
+</form>

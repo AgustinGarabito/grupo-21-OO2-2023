@@ -3,21 +3,21 @@ package com.unla.grupo21OO22023.entities;
 import jakarta.persistence.Entity;
 
 @Entity
-public class RiegoAutomatico extends DispositivoIOT{
-	
+public class RiegoAutomatico extends DispositivoIOT {
+
 	// ATRIBUTOS
 	private float humedadMinima;
-	private float medicionActual;
-	
+	private float humedadMaxima;
+
 	// CONSTRUCTOR
 	public RiegoAutomatico() {
-		
+
 	}
 
-	public RiegoAutomatico(String nombre, int nroSector, float humedadMinima) {
-		super(nombre, nroSector);
+	public RiegoAutomatico(int id, String nombre, int nroSector, float humedadMinima, float humedadMaxima) {
+		super(id, nombre, nroSector);
 		this.humedadMinima = humedadMinima;
-		this.medicionActual = 0;
+		this.humedadMaxima = humedadMaxima;
 	}
 
 	// GET AND SET
@@ -29,13 +29,28 @@ public class RiegoAutomatico extends DispositivoIOT{
 		this.humedadMinima = humedadMinima;
 	}
 
-	public float getMedicionActual() {
-		return medicionActual;
+	public float getHumedadMaxima() {
+		return humedadMaxima;
 	}
 
-	public void setMedicionActual(float medicionActual) {
-		this.medicionActual = medicionActual;
+	public void setHumedadMaxima(float humedadMaxima) {
+		this.humedadMaxima = humedadMaxima;
 	}
 	
-	
+	// SINCRONIZAR EVENTOS
+	public int verificarEvento(float valor) {
+		// 0 NO GENERA EVENTO
+		// 1 PRENDE REGADOR
+		// 2 LLAMA MANTENIMIENTO
+		
+		int retorno = 0;
+		
+		if(valor> humedadMinima && valor < humedadMaxima) {
+			retorno = 1;
+		} else if(valor > humedadMaxima){
+			retorno = 2;
+		}
+		
+		return retorno;
+	}
 }

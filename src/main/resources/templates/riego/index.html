@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container-fluid p-0">
+		<font face="sans-serif">
+
+			<div class="card" style="width: 100%;" font face="sans-serif">
+
+				<div class="card-body">
+					<h3 class="card-title">CRUD RIEGO</h3>
+					<br><br>
+
+					<a href="/riego/new" class="btn btn-primary">AGREGAR</a>
+					<br><br>					
+					<caption>Lista de Riego Inteligente</caption>
+					<table class="table table-sm">
+					
+						<thead class="thead-dark">
+						
+							<tr>
+								<th scope="col">Nombre</th>
+								<th scope="col">ID</th>
+								<th scope="col">NroSector</th>
+								<th scope="col">HumedaMinima</th>
+								<th scope="col">HumedadMaxima</th>
+								<th scope="col">Activo</th>				
+								<th scope="col">Vista</th>
+							
+							</tr>
+							
+						</thead>
+						
+						<tbody>
+							
+							<tr th:each="riego : ${riegos}">
+								<td><span th:text="${riego.nombre}" /></td>
+								<td><span th:text="${riego.id}" /></td>
+								<td><span th:text="${riego.nroSector}" /></td>
+								
+								<td><span th:text="${riego.humedadMinima}" /></td>
+								<td><span th:text="${riego.humedadMaxima}" /></td>
+								<td><span th:text="${riego.activo}" /></td>
+								
+								<td><a class="btn btn-success" th:href="@{/riego/{id}(id=${riego.id})}" th:text="'EDITAR'" title="Editar"></a>
+								</td>
+								
+								<td><a class="btn btn-danger" th:href="@{/evento/riegos/} + ${riego.id}" th:text="'EVENTOS'" title="Eventos"></a>
+								</td>
+						
+							</tr>
+						
+						</tbody>
+					
+					</table>
+				
+				</div>
+			
+			</div>
+		
+		
+		</div>
+	</body>
+<br><br><br>
+&ensp;&nbsp;<a href="/index"><input type="button" value="HOME" /></a>
+</html>

@@ -1,0 +1,14 @@
+<form action="#" th:action="@{/riego/update}" th:object="${riego}"
+	method="post">
+	<input type="hidden" th:field="*{id}" />
+	</p>
+	<p>
+		Nombre: <input type="text" th:field="*{nombre}" />
+		Nro Sector: <input type="text" th:field="*{nroSector}" />
+		Humedad Minima: <input type="text" th:field="*{humedadMinima}" />
+		Humedad Maxima: <input type="text" th:field="*{humedadMaxima}" />
+		Activo: <input type="checkbox" th:field="*{activo}" />
+	</p>
+	<input type="submit" value="Editar" />
+</form>
+<a href="/index"><input type="button" value="HOME" /></a>

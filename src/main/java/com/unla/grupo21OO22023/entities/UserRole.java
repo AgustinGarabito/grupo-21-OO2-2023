@@ -5,47 +5,50 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "dispositivoiot")
-public abstract class DispositivoIOT {
+@Table(name="user_role", uniqueConstraints=@UniqueConstraint(columnNames= {"role", "user_id"}))
+public class UserRole {
 
 	// ATRIBUTOS
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	private String nombre;
-	
-	private int nroSector;
-	
-	private boolean activo;
-	
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="user_id", nullable=false)
+	private User user;
+
+	@Column(name="role", nullable=false, length=100)
+	private String role;
+
+	@Column(name="createdat")
 	@CreationTimestamp
 	private LocalDateTime createdAt;
 
+	@Column(name="updatedat")
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
-	
-	public DispositivoIOT() {
+
+	// CONSTRUCTOR
+	public UserRole() {
 		
 	}
 	
-	// CONSTRUCTOR
-	public DispositivoIOT(int id, String nombre, int nroSector) {
-		super();
+	public UserRole(int id, User user, String role) {
 		this.id = id;
-		this.nombre = nombre;
-		this.nroSector = nroSector;
-		this.activo = true;
+		this.user = user;
+		this.role = role;
 	}
 
 	// GET AND SET
@@ -53,39 +56,31 @@ public abstract class DispositivoIOT {
 		return id;
 	}
 
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public User getUser() {
+		return user;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public int getNroSector() {
-		return nroSector;
+	public String getRole() {
+		return role;
 	}
 
-	public void setNroSector(int nroSector) {
-		this.nroSector = nroSector;
-	}
-
-	public boolean isActivo() {
-		return activo;
-	}
-
-	public void setActivo(boolean activo) {
-		this.activo = activo;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(LocalDateTime createdAt) {
+	protected void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 
