@@ -26,7 +26,6 @@
 							<tr>
 								<th scope="col">Nombre Dispositivo </th>
 								<th scope="col">Nº Sector</th>
-								<th scope="col">Activo</th>
 								<th scope="col">valor Min </th>
 								<th scope="col">Valor Max</th>
 								<th scope="col">Movimiento</th>
@@ -43,7 +42,6 @@
 							<tr th:each="p : ${listaDispositivos}">
 								<td th:text="${p.nombre}"></td>
 								<td th:text="${p.nroSector}"></td>
-								<td th:text="${p.activo}"></td>
 
 								<td th:text="${p.valorMinimo}"></td>
 								<td th:text="${p.valorMaximo}"></td>

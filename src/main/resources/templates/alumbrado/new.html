@@ -2,12 +2,12 @@
 	
 	<p>Nombre: <input type="text" th:field="*{nombre}" placeholder="Ingrese nombre dispositivo" required minlength="4" maxlength="50"  /></p>
 	<p>Nro Sector: <input type="number" th:field="*{nroSector}"  value="1" min="1" max="147" required/></p>	
-	<p>Activo: <input type="checkbox" th:field="*{activo}" /></p>
+	
 	
 	<p>Valor Minimo: <input type="number" th:field="*{valorMinimo}" value="1" min="1" max="50" required/></p>
-	<p>Valor Maximo: <input type="number" th:field="*{valorMaximo}" value="1" min="1" max="50"required/></p>	
+	<p>Valor Maximo: <input type="number" th:field="*{valorMaximo}" value="1" min="1" max="50"required/></p>
+	<p>Medicion Sensor: <input type="number" th:field="*{medicionSensor}" value="1" min="1" max="50" required/></p>	
 	<p>Sensor Movimiento: <input type="checkbox" th:field="*{sensorMovimiento}" /></p>
-	<p>Medicion Sensor: <input type="number" th:field="*{medicionSensor}" value="1" min="1" max="50" required/></p>
 		
 	<input type="submit" value="CREAR"/>
 	

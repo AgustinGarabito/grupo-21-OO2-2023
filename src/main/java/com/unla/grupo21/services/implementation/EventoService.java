@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.unla.grupo21.entities.DispositivoIOT;
 import com.unla.grupo21.entities.Evento;
 import com.unla.grupo21.models.EventoModel;
 import com.unla.grupo21.repositories.IEventoRepository;
@@ -50,6 +51,13 @@ public class EventoService implements IEventoService{
 		}
 	}
 	
-
+	/////////////////////////
+	public List<Evento> listAll(String palabraClave){
+		if(palabraClave != null) {
+			return eventoRepository.findAll(palabraClave);
+		}
+		return eventoRepository.findAll();
+	}
+	////////////////
 
 }

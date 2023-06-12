@@ -110,29 +110,44 @@ public class AlumbradoController {
 	/* ***************************************** */
 	//EVENTOS
 	/* ***************************************** */
-	
-	/*BORRAR
-	@GetMapping("/eventos")
-	public ModelAndView index2() {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ALUMBRADOYEVENTO_LIST);
-		mAV.addObject("listaDispositivos", dispositivoIOTService.getAll());
-		return mAV;
-	}*/
-	
-	//filtro
+			
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
 	@GetMapping("/eventos")
-	public String index2(Model modelo, @Param("palabraClave") String palabraClave) {
-		List<DispositivoIOT> lista = dispositivoIOTService.listAll(palabraClave);
-		modelo.addAttribute("listaDispositivos", lista);	
+	public ModelAndView index2(Model modelo, @Param("palabraClave") String palabraClave) {
+		List<Evento> lista = eventoService.listAll(palabraClave);		
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ALUMBRADOYEVENTO_LIST);
+		modelo.addAttribute("listaEventos", lista);	
 		modelo.addAttribute("palabraClave", palabraClave);
-		return "alumbrado/listaEventosAlumbrado";
+		return mAV;
+	}
+	
+	
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	@GetMapping("/eventos/{id}")
+	public ModelAndView get2(@PathVariable("id") int id) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EVENTO_ROOT);
+		mAV.addObject("evento", eventoService.findById(id));
+		mAV.addObject("dispositivos", dispositivoIOTService.getAll());
+		return mAV;
 	}
 	
 	
 	
-
-
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	@GetMapping("/newEvento")
+	public String create(Model model) {
+		List<DispositivoIOT> listaDispositivos = dispositivoIOTService.getAll();
+	    model.addAttribute("evento", new Evento());
+	    model.addAttribute("listaDispositivos", listaDispositivos);
+	    return "alumbrado/newEvento";//ruta al template
+	}
 	
+	
+	
+	@PostMapping("eventos/create")
+	public RedirectView create(@ModelAttribute("evento") Evento evento) {
+		eventoService.insertOrUpdate(evento);
+		return new RedirectView(ViewRouteHelper.EVENTO_ROOT);
+	}
 
 }

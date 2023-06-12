@@ -64,6 +64,9 @@ public class DispositivoIOTController {
 		return mAV;
 	}
 	
+
+	/////////////////////
+	
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("dispositivo") DispositivoIOT dispositivoIOT) {
 		dispositivoIOTService.insertOrUpdate(dispositivoIOT);

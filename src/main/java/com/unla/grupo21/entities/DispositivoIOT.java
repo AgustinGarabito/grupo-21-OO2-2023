@@ -18,29 +18,26 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
+
 
 @Entity
 @Table(name = "dispositivoiot")
 @SQLDelete(sql = "UPDATE dispositivoiot SET deleted = true WHERE id=?")
 @Where(clause = "deleted=false")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class DispositivoIOT {
+public abstract class DispositivoIOT {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	protected int id;
 	
-	private String nombre;
+	protected String nombre;
+
+	protected int nroSector;
+
+	protected int medicionSensor;
 	
-	@Min(1)
-	@Max(147)
-	private int nroSector;
-	private boolean activo;
-	
-	
-	private boolean deleted = Boolean.FALSE;
+	protected boolean deleted = Boolean.FALSE;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -55,12 +52,30 @@ public class DispositivoIOT {
 	
 	public DispositivoIOT() {}
 
-	public DispositivoIOT(int id, String nombre, int nroSector, boolean activo) {
+	
+	public DispositivoIOT(int id, String nombre, int nroSector, int medicionSensor, boolean deleted) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.nroSector = nroSector;
-		this.activo = activo;
+		this.medicionSensor = medicionSensor;
+		this.deleted = deleted;
+		
+	}
+	
+	
+
+	public DispositivoIOT(int id, String nombre, int nroSector, int medicionSensor) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.nroSector = nroSector;
+		this.medicionSensor = medicionSensor;
+	}
+
+
+	public DispositivoIOT(int id) {
+		this.id = id;
 	}
 	
 
@@ -92,15 +107,25 @@ public class DispositivoIOT {
 	public void setNroSector(int nroSector) {
 		this.nroSector = nroSector;
 	}
+	
+	
 
-
-	public boolean isActivo() {
-		return activo;
+	public int getMedicionSensor() {
+		return medicionSensor;
 	}
 
 
-	public void setActivo(boolean activo) {
-		this.activo = activo;
+	public void setMedicionSensor(int medicionSensor) {
+		this.medicionSensor = medicionSensor;
+	}
+
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public LocalDateTime getCreatedAt() {
@@ -118,6 +143,16 @@ public class DispositivoIOT {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
+
+	@Override
+	public String toString() {
+		return "DispositivoIOT: " + nombre + " - nroSector:" + nroSector + " - medicion:" + medicionSensor
+				+ "";
+	}
+
+
+	
 	
 	
 	

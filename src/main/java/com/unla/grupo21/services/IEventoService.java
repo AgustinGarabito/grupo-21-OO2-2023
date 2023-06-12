@@ -17,6 +17,7 @@ public interface IEventoService {
 
 	public boolean remove(int id);
 	
-	
+	///////////////////
+	public List<Evento> listAll(String palabraClave);
 
 }

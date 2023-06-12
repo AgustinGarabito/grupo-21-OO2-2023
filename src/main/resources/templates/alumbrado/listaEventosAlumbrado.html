@@ -20,6 +20,8 @@
 				<div class="card-body">
 					<h3 class="card-title">ALUMBRADO Y EVENTOS - REPORTE</h3>
 
+					<br><br>
+					<a href="/alumbrado/newEvento" class="btn btn-primary">AGREGAR EVENTO</a>
 					<br><br><br>
 					<!--Filtro-->
 					<form class="form-inline" th:action="@{eventos}">
@@ -46,16 +48,12 @@
 
 							<tr>
 								<th scope="col">Dispositivo </th>
-								<th scope="col">Nº Sector</th>
-								<th scope="col">Activo</th>
-								<th scope="col">Minimo </th>
-								<th scope="col">Maximo</th>
-								<th scope="col">Movimiento</th>
-								<th scope="col">Medicion</th>
-								<th scope="col">Descripcion</th>
+								<th scope="col">Nº Sector</th>					
+								<th scope="col">Medición</th>
+								<th scope="col">Descripción</th>
 								<th scope="col">Fecha</th>
 								<th scope="col">Hora</th>
-								<th scope="col">EVENTO</th>
+								
 
 							</tr>
 
@@ -63,24 +61,15 @@
 
 						<tbody>
 
-							<tr th:each="p : ${listaDispositivos}">
-								<td th:text="${p.nombre}"></td>
-								<td th:text="${p.nroSector}"></td>
-								<td th:text="${p.activo}"></td>
+							<tr th:each="p : ${listaEventos}">
+								<td th:text="${p.dispositivoIOT.nombre}"></td>
 
-								<td th:text="${p.valorMinimo}"></td>
-								<td th:text="${p.valorMaximo}"></td>
-								<td th:text="${p.sensorMovimiento}"></td>
-								<td th:text="${p.medicionSensor}"></td>
+								<td th:text="${p.dispositivoIOT.nroSector}"></td>
+								<td th:text="${p.dispositivoIOT.medicionSensor}"></td>
 
-								<td></td>
-								<td></td>
-								<td></td>
-
-
-								<td><a class="btn btn-primary"  th:href="@{/alumbrado/eventos/} + ${p.id}" th:text="'AGREGAR'"
-										title="Editar"></a></td>
-
+								<td th:text="${p.descripcion}"></td>
+								<td th:text="${p.fecha}"></td>
+								<td th:text="${p.hora}"></td>
 							</tr>
 						</tbody>
 					</table>
