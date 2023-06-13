@@ -1,5 +1,8 @@
 package com.unla.grupo21OO22023.controllers;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.unla.grupo21OO22023.entities.Evento;
 import com.unla.grupo21OO22023.entities.RiegoAutomatico;
 import com.unla.grupo21OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo21OO22023.models.RiegoModel;
+import com.unla.grupo21OO22023.services.IEventoService;
 import com.unla.grupo21OO22023.services.IRiegoAutomaticoService;
 
 @Controller
@@ -28,6 +33,10 @@ public class RiegoAutomaticoController {
 	@Qualifier("riegoService")
 	private IRiegoAutomaticoService riegoService;
 
+	@Autowired
+	@Qualifier("eventoService")
+	private IEventoService eventoService;
+	
 	private ModelMapper modelMapper = new ModelMapper();
 
 	// INDEX LISTA
@@ -53,6 +62,12 @@ public class RiegoAutomaticoController {
 	public RedirectView create(@ModelAttribute("riego") RiegoModel riegoModel) {
 		riegoModel.setActivo(true);
 		riegoService.insertOrUpdate(modelMapper.map(riegoModel, RiegoAutomatico.class));
+		Evento e = new Evento();
+		e.setDescripcion("Se instalo el dispositivo");
+		e.setDispositivo(modelMapper.map(riegoModel, RiegoAutomatico.class));
+		e.setFecha(LocalDate.now());
+		e.setHora(LocalTime.now());	
+		eventoService.insertOrUpdate(e);
 		return new RedirectView(ViewRouteHelper.RIEGO_ROOT);
 	}
 

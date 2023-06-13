@@ -58,7 +58,7 @@
 <br><br><br>
 
 		<div >
-			<form action="#" th:action="@{/evento/sincronizar/{id}" th:object="${medicion}" method="post">
+			<form action="#" th:action="@{/evento/sincronizar/} + ${e?.dispositivo?.id}" th:object="${medicion}" method="post">
 				<p>Humedad: <input type="text" th:field="*{humedadActual}" /></p>
 				<input type="submit" value="Crear"/>
 			</form>

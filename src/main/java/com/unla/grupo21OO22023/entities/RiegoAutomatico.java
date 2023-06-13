@@ -45,7 +45,7 @@ public class RiegoAutomatico extends DispositivoIOT {
 		
 		int retorno = 0;
 		
-		if(valor> humedadMinima && valor < humedadMaxima) {
+		if(valor< humedadMinima) {
 			retorno = 1;
 		} else if(valor > humedadMaxima){
 			retorno = 2;
