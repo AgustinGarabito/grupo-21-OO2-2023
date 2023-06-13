@@ -22,8 +22,6 @@ public class ViewRouteHelper {
 	
 	//EVENTO
 	public final static String EVENTO_INDEX = "evento/index";
-	public final static String EVENTO_NEW = "alumbrado/eventos/newEvento";
-	
 	
 	//MEDICION
 	public final static String MEDICION_INDEX = "medicion/listaMediciones";

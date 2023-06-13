@@ -20,9 +20,11 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.grupo21.entities.AlumbradoInteligente;
 import com.unla.grupo21.entities.DispositivoIOT;
 import com.unla.grupo21.entities.Evento;
+import com.unla.grupo21.entities.Medicion;
 import com.unla.grupo21.helpers.ViewRouteHelper;
 import com.unla.grupo21.services.IDispositivoIOTService;
 import com.unla.grupo21.services.IEventoService;
+import com.unla.grupo21.services.IMedicionService;
 
 
 @Controller
@@ -39,6 +41,11 @@ public class AlumbradoController {
 	@Autowired
 	@Qualifier("eventoService")
 	private IEventoService eventoService;
+	
+	
+	@Autowired
+	@Qualifier("medicionService")
+	private IMedicionService medicionService;
 	
 	
 
@@ -110,7 +117,8 @@ public class AlumbradoController {
 	/* ***************************************** */
 	//EVENTOS
 	/* ***************************************** */
-			
+	
+	/*
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
 	@GetMapping("/eventos")
 	public ModelAndView index2(Model modelo, @Param("palabraClave") String palabraClave) {
@@ -119,35 +127,18 @@ public class AlumbradoController {
 		modelo.addAttribute("listaEventos", lista);	
 		modelo.addAttribute("palabraClave", palabraClave);
 		return mAV;
-	}
+	}*/
 	
-	
-	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
-	@GetMapping("/eventos/{id}")
-	public ModelAndView get2(@PathVariable("id") int id) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EVENTO_ROOT);
-		mAV.addObject("evento", eventoService.findById(id));
-		mAV.addObject("dispositivos", dispositivoIOTService.getAll());
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
+	@GetMapping("/eventos")
+	public ModelAndView index2(Model modelo, @Param("palabraClave") String palabraClave) {
+		List<Medicion> lista = medicionService.listAll(palabraClave);		
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ALUMBRADOYEVENTO_LIST);
+		modelo.addAttribute("listaMediciones", lista);	
+		modelo.addAttribute("palabraClave", palabraClave);
 		return mAV;
 	}
 	
 	
-	
-	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
-	@GetMapping("/newEvento")
-	public String create(Model model) {
-		List<DispositivoIOT> listaDispositivos = dispositivoIOTService.getAll();
-	    model.addAttribute("evento", new Evento());
-	    model.addAttribute("listaDispositivos", listaDispositivos);
-	    return "alumbrado/newEvento";//ruta al template
-	}
-	
-	
-	
-	@PostMapping("eventos/create")
-	public RedirectView create(@ModelAttribute("evento") Evento evento) {
-		eventoService.insertOrUpdate(evento);
-		return new RedirectView(ViewRouteHelper.EVENTO_ROOT);
-	}
 
 }

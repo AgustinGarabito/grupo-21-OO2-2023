@@ -53,7 +53,7 @@
 								<th scope="col">Dispositivo IOT </th>
 								<th scope="col">Nº Sector</th>					
 								<th scope="col">Medición</th>
-								<th scope="col">Sensor Movimiento</th>
+								<th scope="col">Descripción</th>
 								<th scope="col">Fecha</th>
 								<th scope="col">Hora</th>
 								
@@ -64,13 +64,13 @@
 
 						<tbody>
 
-							<tr th:each="p : ${listaMediciones}">
+							<tr th:each="p : ${listaEventos}">
 								<td th:text="${p.dispositivoIOT.nombre}"></td>
 
 								<td th:text="${p.dispositivoIOT.nroSector}"></td>
-								<td th:text="${p.valorSensor}"></td>
+								<td th:text="${p.dispositivoIOT.medicionSensor}"></td>
 
-								<td th:text="${p.sensorMovimiento}"></td>
+								<td th:text="${p.descripcion}"></td>
 								<td th:text="${p.fecha}"></td>
 								<td th:text="${p.hora}"></td>
 								
