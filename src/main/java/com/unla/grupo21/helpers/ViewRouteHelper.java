@@ -24,6 +24,10 @@ public class ViewRouteHelper {
 	public final static String EVENTO_INDEX = "evento/index";
 	public final static String EVENTO_NEW = "alumbrado/eventos/newEvento";
 	
+	
+	//MEDICION
+	public final static String MEDICION_INDEX = "medicion/listaMediciones";
+	
 
 	//USER
 	public final static String USER_LOGIN = "user/login";
@@ -34,7 +38,7 @@ public class ViewRouteHelper {
 	public final static String ALUMBRADO_ROOT = "/alumbrado";
 	public final static String DISPOSITIVO_ROOT = "/dispositivo";
 	public final static String EVENTO_ROOT = "/alumbrado/eventos";
-	
+	public final static String MEDICION_ROOT = "/medicion";
 	
 	
 }

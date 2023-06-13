@@ -8,24 +8,23 @@ import jakarta.persistence.Entity;
 @Entity
 public class MedicionAlumbrado extends Medicion{
 	
-	private int medicionSensor;
+	private int valorSensor;
 	private boolean sensorMovimiento;
 	
-	public MedicionAlumbrado() {
-	}
-
-	public MedicionAlumbrado(int id, DispositivoIOT dispositivoIOT, LocalDate fecha, LocalTime hora,int medicionSensor, boolean sensorMovimiento) {
-		super( id,  dispositivoIOT,  fecha,  hora);
-		this.medicionSensor = medicionSensor;
+	public MedicionAlumbrado() {}
+	
+	public MedicionAlumbrado(int valorSensor, boolean sensorMovimiento) {
+		super();
+		this.valorSensor = valorSensor;
 		this.sensorMovimiento = sensorMovimiento;
 	}
 
-	public int getMedicionSensor() {
-		return medicionSensor;
+	public int getValorSensor() {
+		return valorSensor;
 	}
 
-	public void setMedicionSensor(int medicionSensor) {
-		this.medicionSensor = medicionSensor;
+	public void setValorSensor(int valorSensor) {
+		this.valorSensor = valorSensor;
 	}
 
 	public boolean isSensorMovimiento() {
