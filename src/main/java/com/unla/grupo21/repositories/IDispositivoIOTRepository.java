@@ -18,7 +18,7 @@ public interface IDispositivoIOTRepository extends JpaRepository<DispositivoIOT,
 	
 	///////////////
 	@Query("SELECT d FROM DispositivoIOT d WHERE"
-			+ "	CONCAT(d.nombre,d.valorMinimo,d.valorMaximo,d.nroSector,d.medicionSensor,d.sensorMovimiento)"
+			+ "	CONCAT(d.nombre,d.valorMinimo,d.valorMaximo,d.nroSector)"
 			+ "	LIKE %?1%")
 	public List<DispositivoIOT> findAll(String palabraClave);
 	

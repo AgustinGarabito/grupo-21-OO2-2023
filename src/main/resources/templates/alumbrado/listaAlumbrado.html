@@ -28,7 +28,7 @@
 								<th scope="col">Nº Sector</th>
 								<th scope="col">valor Min </th>
 								<th scope="col">Valor Max</th>
-								<th scope="col">Movimiento</th>
+								
 								<th scope="col">Medicion</th>
 								<th scope="col">ACCIONES</th>
 								<th scope="col"></th>
@@ -45,7 +45,7 @@
 
 								<td th:text="${p.valorMinimo}"></td>
 								<td th:text="${p.valorMaximo}"></td>
-								<td th:text="${p.sensorMovimiento}"></td>
+								
 								<td th:text="${p.medicionSensor}"></td>
 
 								<td><a class="btn btn-success" th:href="@{/alumbrado/} + ${p.id}" th:text="'EDITAR'" title="Editar"></a></td>
