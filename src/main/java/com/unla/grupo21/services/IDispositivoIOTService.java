@@ -19,9 +19,7 @@ public interface IDispositivoIOTService {
 
 	public boolean remove(int id);
 
-	////////////////
-	
-	public List<DispositivoIOT> listAll(String palabraClave);
+
 	
 	
 	

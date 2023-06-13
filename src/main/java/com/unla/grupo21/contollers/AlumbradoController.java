@@ -1,6 +1,7 @@
 package com.unla.grupo21.contollers;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import com.unla.grupo21.entities.AlumbradoInteligente;
 import com.unla.grupo21.entities.DispositivoIOT;
 import com.unla.grupo21.entities.Evento;
 import com.unla.grupo21.entities.Medicion;
+import com.unla.grupo21.entities.MedicionAlumbrado;
 import com.unla.grupo21.helpers.ViewRouteHelper;
 import com.unla.grupo21.services.IDispositivoIOTService;
 import com.unla.grupo21.services.IEventoService;
@@ -129,15 +131,31 @@ public class AlumbradoController {
 		return mAV;
 	}*/
 	
+	
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
 	@GetMapping("/eventos")
 	public ModelAndView index2(Model modelo, @Param("palabraClave") String palabraClave) {
-		List<Medicion> lista = medicionService.listAll(palabraClave);		
+		List<Evento> lista = eventoService.listAll(palabraClave);	
+		
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ALUMBRADOYEVENTO_LIST);
-		modelo.addAttribute("listaMediciones", lista);	
+		List<Medicion> medicion = medicionService.getAll();
+		List<Evento> lista2 = new ArrayList();
+		
+		for(Medicion m: medicion) {
+			if(m instanceof MedicionAlumbrado && m!= null) {
+				lista2.add(m.eventoAlumbrado());
+			}
+			
+		}
+		
+		
+		modelo.addAttribute("listaEventos", lista2);	
 		modelo.addAttribute("palabraClave", palabraClave);
 		return mAV;
 	}
+	
+	
+
 	
 	
 

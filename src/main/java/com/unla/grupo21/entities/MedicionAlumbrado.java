@@ -13,8 +13,8 @@ public class MedicionAlumbrado extends Medicion{
 	
 	public MedicionAlumbrado() {}
 	
-	public MedicionAlumbrado(int valorSensor, boolean sensorMovimiento) {
-		super();
+	public MedicionAlumbrado(int id, DispositivoIOT dispositivoIOT, LocalDate fecha, LocalTime hora, int valorSensor, boolean sensorMovimiento) {
+		super( id,  dispositivoIOT,  fecha, hora);
 		this.valorSensor = valorSensor;
 		this.sensorMovimiento = sensorMovimiento;
 	}
@@ -35,6 +35,21 @@ public class MedicionAlumbrado extends Medicion{
 		this.sensorMovimiento = sensorMovimiento;
 	}
 	
-	
+	public Evento eventoAlumbrado() {
+		Evento evento = new Evento();
+		if(dispositivoIOT.prenderAlumbrado(this.valorSensor) && this.sensorMovimiento==true) {
+			evento.setDescripcion("Luz Prendida");
+			evento.setDispositivoIOT(getDispositivoIOT());
+			evento.setFecha(getFecha());
+			evento.setHora(getHora());
+		}else if(dispositivoIOT.apagarAlumbrado(this.valorSensor) && this.sensorMovimiento==true) {
+			evento.setDescripcion("Luz Apagada");
+			evento.setDispositivoIOT(getDispositivoIOT());
+			evento.setFecha(getFecha());
+			evento.setHora(getHora());
+		}
+		
+		return evento;
+	}
 
 }

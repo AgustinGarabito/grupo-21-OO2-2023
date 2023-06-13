@@ -35,7 +35,6 @@ public abstract class DispositivoIOT {
 
 	protected int nroSector;
 
-	protected int medicionSensor;
 	
 	protected boolean deleted = Boolean.FALSE;
 	
@@ -53,24 +52,13 @@ public abstract class DispositivoIOT {
 	public DispositivoIOT() {}
 
 	
-	public DispositivoIOT(int id, String nombre, int nroSector, int medicionSensor, boolean deleted) {
+	public DispositivoIOT(int id, String nombre, int nroSector, boolean deleted) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.nroSector = nroSector;
-		this.medicionSensor = medicionSensor;
 		this.deleted = deleted;
 		
-	}
-	
-	
-
-	public DispositivoIOT(int id, String nombre, int nroSector, int medicionSensor) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.nroSector = nroSector;
-		this.medicionSensor = medicionSensor;
 	}
 
 
@@ -108,16 +96,6 @@ public abstract class DispositivoIOT {
 		this.nroSector = nroSector;
 	}
 	
-	
-
-	public int getMedicionSensor() {
-		return medicionSensor;
-	}
-
-
-	public void setMedicionSensor(int medicionSensor) {
-		this.medicionSensor = medicionSensor;
-	}
 
 
 	public boolean isDeleted() {
@@ -144,12 +122,17 @@ public abstract class DispositivoIOT {
 		this.updatedAt = updatedAt;
 	}
 
+	
+	
 
 	@Override
 	public String toString() {
-		return "DispositivoIOT: " + nombre + " - nroSector:" + nroSector + " - medicion:" + medicionSensor
-				+ "";
+		return "DispositivoIOT: " + nombre + ", nroSector=" + nroSector + "";
 	}
+
+
+	public abstract boolean prenderAlumbrado(int valorMaximo);
+	public abstract boolean apagarAlumbrado(int valorMinimo);
 
 
 	

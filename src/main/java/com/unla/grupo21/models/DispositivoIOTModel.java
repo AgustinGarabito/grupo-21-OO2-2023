@@ -11,19 +11,17 @@ public class DispositivoIOTModel {
 
 	private int nroSector;
 	
-	private int medicionSensor;
 	
 	private boolean deleted;
 	
 	public DispositivoIOTModel() {}
 
 	
-	public DispositivoIOTModel(int id, String nombre, int nroSector, int medicionSensor, boolean deleted) {
+	public DispositivoIOTModel(int id, String nombre, int nroSector, boolean deleted) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.nroSector = nroSector;
-		this.medicionSensor = medicionSensor;
 		this.deleted = deleted;
 	}
 
@@ -33,18 +31,6 @@ public class DispositivoIOTModel {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	
-	
-	
-	public int getMedicionSensor() {
-		return medicionSensor;
-	}
-
-
-	public void setMedicionSensor(int medicionSensor) {
-		this.medicionSensor = medicionSensor;
 	}
 
 

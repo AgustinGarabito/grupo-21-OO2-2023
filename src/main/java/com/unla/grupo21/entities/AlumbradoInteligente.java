@@ -13,8 +13,8 @@ public class AlumbradoInteligente extends DispositivoIOT{
 	
 	public AlumbradoInteligente() {}
 
-	public AlumbradoInteligente(int id, String nombre, int nroSector, int medicionSensor, boolean deleted, int valorMinimo, int valorMaximo) {
-		super( id,  nombre,  nroSector,  medicionSensor,deleted);
+	public AlumbradoInteligente(int id, String nombre, int nroSector, boolean deleted, int valorMinimo, int valorMaximo) {
+		super( id,  nombre,  nroSector,deleted);
 		this.valorMinimo = valorMinimo;
 		this.valorMaximo = valorMaximo;
 	}
@@ -36,7 +36,20 @@ public class AlumbradoInteligente extends DispositivoIOT{
 	}
 
 	
+	public boolean prenderAlumbrado(int valorMaximo) {
+		boolean resultado = false;
+		if(this.valorMaximo >= 50) {
+			resultado = true;
+		}
+		return resultado;
+	}
 	
-	
+	public boolean apagarAlumbrado(int valorMinimo) {
+		boolean resultado = false;
+		if(this.valorMinimo <= 20) {
+			resultado = true;
+		}
+		return resultado;
+	}
 
 }

@@ -40,6 +40,7 @@ public class EventoController {
 		return mAV;
 	}
 
+	/*
 	@GetMapping("/new")
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EVENTO_NEW);
@@ -51,7 +52,7 @@ public class EventoController {
 	public RedirectView create(@ModelAttribute("evento") EventoModel eventoModel) {
 		eventoService.insertOrUpdate(modelMapper.map(eventoModel, Evento.class));
 		return new RedirectView(ViewRouteHelper.EVENTO_ROOT);
-	}
+	}*/
 
 	
 

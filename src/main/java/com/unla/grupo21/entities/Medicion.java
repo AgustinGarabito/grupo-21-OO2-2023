@@ -31,38 +31,44 @@ public abstract class Medicion {
 	public Medicion() {}
 	
 	public Medicion(int id, DispositivoIOT dispositivoIOT, LocalDate fecha, LocalTime hora) {
-		super();
 		this.id = id;
 		this.dispositivoIOT = dispositivoIOT;
 		this.fecha = fecha;
 		this.hora = hora;
 	}
+	
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public DispositivoIOT getDispositivoIOT() {
 		return dispositivoIOT;
 	}
+	
 	public void setDispositivoIOT(DispositivoIOT dispositivoIOT) {
 		this.dispositivoIOT = dispositivoIOT;
 	}
+	
 	public LocalDate getFecha() {
 		return fecha;
 	}
+	
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 	public LocalTime getHora() {
 		return hora;
 	}
+	
 	public void setHora(LocalTime hora) {
 		this.hora = hora;
 	}
 	
 	
-	
+	public abstract Evento eventoAlumbrado();
 
 }

@@ -20,7 +20,7 @@ public interface IEventoRepository extends JpaRepository<Evento, Serializable>{
 	
 	///////////////////
 	@Query("SELECT e FROM Evento e INNER JOIN DispositivoIOT d WHERE"
-			+ "	CONCAT(e.descripcion,e.fecha,e.hora,e.dispositivoIOT.nombre,e.dispositivoIOT.nroSector)"
+			+ "	CONCAT(e.descripcion,e.fecha,e.hora,e.dispositivoIOT)"
 			+ "	LIKE %?1%")
 	public List<Evento> findAll(String palabraClave);
 	///////////////////

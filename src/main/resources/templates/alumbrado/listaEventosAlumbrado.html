@@ -23,7 +23,7 @@
 					<br><br>
 					<!--<a href="/alumbrado/newEvento" class="btn btn-primary">AGREGAR EVENTO</a>-->
 					<p>Valores de referencia ALumbrado:</p>
-					<p>Luz Prendida => 50</p>
+					<p>Luz Prendida >= 50</p>
 					<p>Luz Apagada <= 20</p>
 					<br>
 					<!--Filtro-->
@@ -51,9 +51,8 @@
 
 							<tr>
 								<th scope="col">Dispositivo IOT </th>
-								<th scope="col">Nº Sector</th>					
-								<th scope="col">Medición</th>
-								<th scope="col">Sensor Movimiento</th>
+											
+								<th scope="col">Descripcion</th>
 								<th scope="col">Fecha</th>
 								<th scope="col">Hora</th>
 								
@@ -64,20 +63,13 @@
 
 						<tbody>
 
-							<tr th:each="p : ${listaMediciones}">
-								<td th:text="${p.dispositivoIOT.nombre}"></td>
-
-								<td th:text="${p.dispositivoIOT.nroSector}"></td>
-								<td th:text="${p.valorSensor}"></td>
-
-								<td th:text="${p.sensorMovimiento}"></td>
-								<td th:text="${p.fecha}"></td>
-								<td th:text="${p.hora}"></td>
+							<tr th:each="e : ${listaEventos}">
+								<td th:text="${e.dispositivoIOT}"></td>
 								
-								
-								
-								
-								
+								<td th:text="${e.descripcion}"></td>														
+								<td th:text="${e.fecha}"></td>
+								<td th:text="${e.hora}"></td>
+																
 							</tr>
 						</tbody>
 					</table>
