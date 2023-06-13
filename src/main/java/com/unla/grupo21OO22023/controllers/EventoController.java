@@ -45,22 +45,30 @@ public class EventoController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EVENTO_PARTICULAR);
 		mAV.addObject("eventos", eventoService.findByDispositivo(riegoService.findById(id)));
 		mAV.addObject("medicion", new MedicionRiego());
+		mAV.addObject("idDispositivo", id);
 		return mAV;
 	}
 
 	// SINCRONIZAR
 	@PostMapping("/sincronizar/{id}")
 	public RedirectView sincronizarEventos(@PathVariable("id") int id, @ModelAttribute("medicion") MedicionRiego m) {
-		RedirectView r = new RedirectView(ViewRouteHelper.EVENTO_PARTICULAR);
+		RedirectView r = new RedirectView(ViewRouteHelper.EVENTOS_SINGLE + id);
 		m.setRiego(riegoService.findById(id));
 		Evento e = m.generarEvento();
-		if(e != null) {
+		if (e.getDescripcion() != null) {
 			eventoService.insertOrUpdate(e);
 		} else {
-			r = new RedirectView(ViewRouteHelper.EVENTO_ERROR);
+			r = new RedirectView(ViewRouteHelper.R_EVENTO_ERROR);
 		}
 		return r;
-		
+
+	}
+
+	// ERROR
+	@GetMapping("/error")
+	public ModelAndView error() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EVENTO_ERROR);
+		return mAV;
 	}
 
 }

@@ -23,7 +23,11 @@ public class ViewRouteHelper {
 	public final static String EVENTO_PARTICULAR = "evento/particular";
 	public final static String EVENTO_ERROR = "evento/error";
 	
+	
 	// REDIRECTS
 	public final static String ROUTE = "/index";
 	public final static String RIEGO_ROOT = "/riego";
+	public final static String EVENTOS_SINGLE = "/evento/riegos/";
+	public final static String R_EVENTO_ERROR = "/evento/error";
+	
 }

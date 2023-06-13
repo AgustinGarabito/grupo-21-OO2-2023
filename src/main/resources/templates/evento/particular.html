@@ -57,12 +57,15 @@
 	</body>
 <br><br><br>
 
-		<div >
-			<form action="#" th:action="@{/evento/sincronizar/} + ${e?.dispositivo?.id}" th:object="${medicion}" method="post">
-				<p>Humedad: <input type="text" th:field="*{humedadActual}" /></p>
-				<input type="submit" value="Crear"/>
+		<div class="form-group">
+			<form action="#" th:action="@{/evento/sincronizar/} + ${idDispositivo}" th:object="${medicion}" method="post">
+				<div class="form-group">
+				<label>Humedad: </label>
+				<input type="text" th:field="*{humedadActual}" class="form-control"/>
+				</div>
+				<input type="submit" value="Crear" class="btn btn-success"/>
 			</form>
 		</div>
 
-&ensp;&nbsp;<a href="/index"><input type="button" value="HOME" /></a>
+&ensp;&nbsp;<a class="btn btn-secondary" href="/index"><input type="button" value="HOME" /></a>
 </html>

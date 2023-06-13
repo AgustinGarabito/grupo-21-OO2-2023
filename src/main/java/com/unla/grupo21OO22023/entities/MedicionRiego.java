@@ -52,13 +52,13 @@ public class MedicionRiego extends Medicion{
 		if(var == 1) {
 			e.setDescripcion("Se activo el riego");
 			e.setDispositivo(riego);
-			e.setFecha(getFecha());
-			e.setHora(getHora());
+			e.setFecha(LocalDate.now());
+			e.setHora(LocalTime.now());
 		} else  if(var == 2){
 			e.setDescripcion("Se llamo a mantenimiento");
 			e.setDispositivo(riego);
-			e.setFecha(getFecha());
-			e.setHora(getHora());
+			e.setFecha(LocalDate.now());
+			e.setHora(LocalTime.now());
 		}
 		
 		return e;
