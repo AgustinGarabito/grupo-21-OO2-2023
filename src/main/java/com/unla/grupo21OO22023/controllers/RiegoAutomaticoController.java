@@ -51,6 +51,7 @@ public class RiegoAutomaticoController {
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("riego") RiegoModel riegoModel) {
+		riegoModel.setActivo(true);
 		riegoService.insertOrUpdate(modelMapper.map(riegoModel, RiegoAutomatico.class));
 		return new RedirectView(ViewRouteHelper.RIEGO_ROOT);
 	}
@@ -68,17 +69,8 @@ public class RiegoAutomaticoController {
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("riego") RiegoAutomatico riego) { // RiegoModel riegoModel
-		/*
-		 * RiegoAutomatico riego = modelMapper.map(riegoModel, RiegoAutomatico.class);
-		 * if(riegoModel.getId() > 0) { RiegoAutomatico riegoOld =
-		 * riegoService.findById(riegoModel.getId());
-		 * riego.setNombre(riegoOld.getNombre());
-		 * riego.setNroSector(riegoOld.getNroSector());
-		 * riego.setHumedadMaxima(riegoOld.getHumedadMaxima());
-		 * riego.setHumedadMinima(riegoOld.getHumedadMinima()); }
-		 * riegoService.insertOrUpdate(riego); return new
-		 * RedirectView(ViewRouteHelper.RIEGO_ROOT);
-		 */
+		RiegoAutomatico riegoOld = riegoService.findById(riego.getId());
+		riego.setCreatedAt(riegoOld.getCreatedAt());
 		riegoService.insertOrUpdate(riego);
 		return new RedirectView(ViewRouteHelper.RIEGO_ROOT);
 	}
@@ -90,10 +82,5 @@ public class RiegoAutomaticoController {
 		riego.setActivo(false);
 		return new RedirectView(ViewRouteHelper.RIEGO_ROOT);
 	}
-
-	// DUDAS
-	// SE GENERA EL ACTIVO EN FALSE
-	// SE PIERDE EL createdAt EN UPDATE
-
 
 }
