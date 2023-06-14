@@ -1,0 +1,25 @@
+<form action="#" th:action="@{/alumbrado/update}" th:object="${alumbrado}"
+	method="post">
+	<input type="hidden" th:field="*{id}" />
+	</p>
+	<p>
+		Nombre: <input type="text" th:field="*{nombre}"/>		
+	</p>
+	<p>
+		Nro Sector: <input type="number" th:field="*{nroSector}" required/>		
+	</p>
+
+	
+	<p>
+		Valor Minimo: <input type="number" th:field="*{valorMinimo}" required/>		
+	</p>
+	<p>
+		Valor Maximo: <input type="number" th:field="*{valorMaximo}" required/>		
+	</p>
+	
+	
+			
+	<input type="submit" value="EDITAR" />
+</form>
+
+<a href="/index"><input type="button" value="HOME" /></a>
