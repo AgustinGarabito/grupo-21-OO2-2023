@@ -81,7 +81,7 @@ public class AlumbradoController {
 	}
 	
 	
-	
+
 	@GetMapping("/{id}")
 	public String get(Model model, @PathVariable("id") int id) {
 		var objeto = dispositivoIOTService.findById(id);
@@ -93,7 +93,7 @@ public class AlumbradoController {
 			return "alumbrado";
 		}
 	}
-
+	
 
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("alumbrado") AlumbradoInteligente alumbradoInteligente) {
@@ -102,21 +102,12 @@ public class AlumbradoController {
 	}
 	
 	
-	
 	@GetMapping("/delete/{id}")
-	public ModelAndView  eliminar(@PathVariable("id")int id, Model model) {				
-		dispositivoIOTService.remove(id);		
-		return listaDispositivos();	
+	public RedirectView delete(@PathVariable("id") int id) {
+		dispositivoIOTService.remove(id);
+		return new RedirectView(ViewRouteHelper.ALUMBRADO_ROOT);
 	}
 	
-	
-	@GetMapping("/listaDispositivos")
-	public ModelAndView  listaDispositivos() {		
-		ModelAndView mV = new ModelAndView();		
-		mV.setViewName(ViewRouteHelper.ALUMBRADO_LIST);
-		mV.addObject("listaDispositivos",dispositivoIOTService.getAll());				
-		return mV;	
-	}
 	
 	/* ***************************************** */
 	//EVENTOS

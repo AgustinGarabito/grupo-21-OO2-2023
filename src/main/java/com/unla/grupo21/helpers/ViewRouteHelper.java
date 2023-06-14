@@ -4,13 +4,7 @@ public class ViewRouteHelper {
 	/**** Views ****/
 	//HOME
 	public final static String INDEX = "home/index";
-	
-	//DISPOSITIVO
-	public final static String DISPOSITIVO_INDEX = "dispositivo/listaDispositivos";
-	public final static String DISPOSITIVO_NEW = "dispositivo/new";
-	public final static String DISPOSITIVO_UPDATE = "dispositivo/update";
-	public final static String DISPOSITIVO_LIST = "dispositivo/listaDispositivos";
-	
+		
 	
 	//ALUMBRADO
 	public final static String ALUMBRADO_INDEX = "alumbrado/listaAlumbrado";
@@ -30,7 +24,6 @@ public class ViewRouteHelper {
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
 	public final static String ALUMBRADO_ROOT = "/alumbrado";
-
 	public final static String EVENTO_ROOT = "/alumbrado/eventos";
 	public final static String MEDICION_ROOT = "/medicion";
 	
