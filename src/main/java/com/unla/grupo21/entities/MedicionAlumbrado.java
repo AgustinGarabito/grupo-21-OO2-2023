@@ -63,15 +63,16 @@ public class MedicionAlumbrado extends Medicion{
 		this.updatedAt = updatedAt;
 	}
 
+
 	public Evento medicionDispositivoIOT() {
 		Evento evento = new Evento();
 		if(dispositivoIOT.prenderAlumbrado(this.valorSensor) && this.sensorMovimiento==true) {
-			evento.setDescripcion("Luz Prendida");
+			evento.setDescripcion("Prender Luz");
 			evento.setDispositivoIOT(getDispositivoIOT());
 			evento.setFecha(getFecha());
 			evento.setHora(getHora());
 		}else if(dispositivoIOT.apagarAlumbrado(this.valorSensor) && this.sensorMovimiento==true) {
-			evento.setDescripcion("Luz Apagada");
+			evento.setDescripcion("Apagar Luz");
 			evento.setDispositivoIOT(getDispositivoIOT());
 			evento.setFecha(getFecha());
 			evento.setHora(getHora());
@@ -81,8 +82,4 @@ public class MedicionAlumbrado extends Medicion{
 	}
 	
 	
-	
-	
-	
-
 }

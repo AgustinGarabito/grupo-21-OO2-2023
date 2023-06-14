@@ -11,7 +11,7 @@ public interface IMedicionService {
 
 	public Medicion findById(int id);
 	
-
+	//////////////////
 	public List<Medicion> listAll(String palabraClave);
 
 

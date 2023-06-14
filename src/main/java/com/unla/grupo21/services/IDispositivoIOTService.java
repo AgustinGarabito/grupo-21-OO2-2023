@@ -13,8 +13,6 @@ public interface IDispositivoIOTService {
 
 	public DispositivoIOT findById(int id);
 
-	public DispositivoIOTModel findByNombre(String nombre);
-
 	public DispositivoIOTModel insertOrUpdate(DispositivoIOT dispositivoIOT);
 
 	public boolean remove(int id);

@@ -1,7 +1,7 @@
 package com.unla.grupo21.contollers;
 
 import java.util.List;
-
+import java.util.Objects;
 import java.util.ArrayList;
 
 import org.modelmapper.ModelMapper;
@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,10 +25,13 @@ import com.unla.grupo21.entities.Evento;
 import com.unla.grupo21.entities.Medicion;
 import com.unla.grupo21.entities.MedicionAlumbrado;
 import com.unla.grupo21.helpers.ViewRouteHelper;
+import com.unla.grupo21.models.DispositivoIOTModel;
 import com.unla.grupo21.models.EventoModel;
 import com.unla.grupo21.services.IDispositivoIOTService;
 import com.unla.grupo21.services.IEventoService;
 import com.unla.grupo21.services.IMedicionService;
+
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -70,6 +73,7 @@ public class AlumbradoController {
 		mAV.addObject("alumbrado", new AlumbradoInteligente());
 		return mAV;
 	}
+	
 	
 		
 	@PostMapping("/create")
@@ -131,22 +135,22 @@ public class AlumbradoController {
 		List<Evento> listaEventos = new ArrayList<>();
 		Evento evento = new Evento();
 		
-		
 		for(Medicion med: medicion) {
-				
 			if(med instanceof MedicionAlumbrado) {
 				listaEventos.add(med.medicionDispositivoIOT());
 				evento=med.medicionDispositivoIOT();
-				if(evento!= null) {
-					eventoService.insertOrUpdate(evento);
-				}					
-			}
-		}
-				
+				if(evento != null) {
+				eventoService.insertOrUpdate(evento);
+			}		
+			}			
+					
+		}	
+		
 		modelo.addAttribute("listaEventos", listaEventos);			
 		return mAV;
 	}
 
+	
 	
 	
 

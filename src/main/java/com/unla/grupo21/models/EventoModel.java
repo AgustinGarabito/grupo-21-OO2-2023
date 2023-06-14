@@ -10,10 +10,14 @@ import com.unla.grupo21.entities.DispositivoIOT;
 public class EventoModel {
 	
 	private int id;
+	
 	private String descripcion;
+	
 	private DispositivoIOT dispositivoIOT;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
+	
 	private LocalTime hora;
 	
 	public EventoModel() {}

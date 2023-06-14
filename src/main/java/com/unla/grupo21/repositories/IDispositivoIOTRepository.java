@@ -14,9 +14,5 @@ public interface IDispositivoIOTRepository extends JpaRepository<DispositivoIOT,
 	
 	public abstract DispositivoIOT findById(int id);
 
-	public abstract DispositivoIOT findByNombre(String nombre);
-	
-	
-	
 
 }

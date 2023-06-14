@@ -64,7 +64,7 @@ public class AlumbradoInteligente extends DispositivoIOT{
 
 	public boolean prenderAlumbrado(int valorMaximo) {
 		boolean resultado = false;
-		if(valorMaximo >= 50) {
+		if(valorMaximo >= this.valorMaximo) {
 			resultado = true;
 		}
 		return resultado;
@@ -72,7 +72,7 @@ public class AlumbradoInteligente extends DispositivoIOT{
 	
 	public boolean apagarAlumbrado(int valorMinimo) {
 		boolean resultado = false;
-		if(valorMinimo <= 20) {
+		if(valorMinimo <= this.valorMinimo) {
 			resultado = true;
 		}
 		return resultado;

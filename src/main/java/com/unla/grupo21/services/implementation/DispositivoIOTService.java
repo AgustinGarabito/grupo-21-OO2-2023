@@ -50,17 +50,5 @@ public class DispositivoIOTService implements IDispositivoIOTService{
 	public DispositivoIOT findById(int id) {
 		return dispositivoIOTRepository.findById(id);
 	}
-
-	
-	@Override
-	public DispositivoIOTModel findByNombre(String nombre) {
-		return modelMapper.map(dispositivoIOTRepository.findByNombre(nombre), DispositivoIOTModel.class);
-	}
-
-	
-	
-	
-	
-	
-	 
+ 
 }

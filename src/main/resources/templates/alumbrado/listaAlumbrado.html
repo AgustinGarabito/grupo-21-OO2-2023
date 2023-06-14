@@ -38,15 +38,15 @@
 
 						<tbody>
 
-							<tr th:each="p : ${listaDispositivos}">
-								<td th:text="${p.nombre}"></td>
-								<td th:text="${p.nroSector}"></td>
-								<td th:text="${p.valorMinimo}"></td>
-								<td th:text="${p.valorMaximo}"></td>
+							<tr th:each="d : ${listaDispositivos}">
+								<td th:text="${d.nombre}"></td>
+								<td th:text="${d.nroSector}"></td>
+								<td th:text="${d.valorMinimo}"></td>
+								<td th:text="${d.valorMaximo}"></td>
 	
-								<td><a class="btn btn-success" th:href="@{/alumbrado/} + ${p.id}" th:text="'EDITAR'" title="Editar"></a></td>
+								<td><a class="btn btn-success" th:href="@{/alumbrado/} + ${d.id}" th:text="'EDITAR'" title="Editar"></a></td>
 								
-								<td><a class="btn btn-danger" th:href="@{/alumbrado/delete/} + ${p.id}" th:text="'BORRAR'" title="Borrar"></a>
+								<td><a class="btn btn-danger" th:href="@{/alumbrado/delete/} + ${d.id}" th:text="'BORRAR'" title="Borrar"></a>
 								</td>
 
 							</tr>

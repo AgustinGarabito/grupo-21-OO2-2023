@@ -3,6 +3,9 @@ package com.unla.grupo21.entities;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -29,7 +32,10 @@ public class Evento {
 	@JoinColumn(name="dispositivoIOT_id", nullable=true)
 	private DispositivoIOT dispositivoIOT;
 	
+	
 	private LocalDate fecha;
+	
+
 	private LocalTime hora;
 
 	
@@ -51,16 +57,6 @@ public class Evento {
 
 	}
 	
-
-	public Evento(String descripcion, DispositivoIOT dispositivoIOT, LocalDate fecha, LocalTime hora) {
-		super();
-		this.descripcion = descripcion;
-		this.dispositivoIOT = dispositivoIOT;
-		this.fecha = fecha;
-		this.hora = hora;
-		
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -117,8 +113,19 @@ public class Evento {
 		this.updatedAt = updatedAt;
 	}
 
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		Evento other = (Evento) obj;
+		return id == other.id;
+	}
+
+	
+	
 	
 	
 	

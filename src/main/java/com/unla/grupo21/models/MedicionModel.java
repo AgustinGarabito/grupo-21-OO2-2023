@@ -3,14 +3,21 @@ package com.unla.grupo21.models;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.unla.grupo21.entities.DispositivoIOT;
 
 public class MedicionModel {
 	
 	private int id;
+	
 	private DispositivoIOT dispositivoIOT;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
+	
 	private LocalTime hora;
+	
 	public MedicionModel() {}
 	
 	public MedicionModel(int id, DispositivoIOT dispositivoIOT, LocalDate fecha, LocalTime hora) {
