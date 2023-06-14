@@ -14,20 +14,24 @@
 					<form action="#" th:action="@{/riego/update}" th:object="${riego}" method="post">
 					<input type="hidden" th:field="*{id}" />
 						<div class="form-group">
+						<label>ID: </label>
+						<input type="text" th:field="*{id}" class="form-control" readonly="readonly"/>
+						</div>
+						<div class="form-group">
 						<label>Nombre: </label>
-						<input type="text" th:field="*{nombre}" class="form-control"/>
+						<input type="text" th:field="*{nombre}" class="form-control" required/>
 						</div>
 						<div class="form-group">
 						<label>Nro Sector: </label> 
-						<input type="text" th:field="*{nroSector}" class="form-control"/>
+						<input type="text" th:field="*{nroSector}" class="form-control" required/>
 						</div>
 						<div class="form-group">
 						<label>Humedad Minima: </label> 
-						<input type="text" th:field="*{humedadMinima}" class="form-control"/>
+						<input type="text" th:field="*{humedadMinima}" class="form-control" required/>
 						</div>
 						<div class="form-group">
 						<label>Humedad Maxima: </label>  
-						<input type="text" th:field="*{humedadMaxima}" class="form-control"/>
+						<input type="text" th:field="*{humedadMaxima}" class="form-control" required/>
 						</div>
 						<div class="form-group">
 						<label>Activo: </label>

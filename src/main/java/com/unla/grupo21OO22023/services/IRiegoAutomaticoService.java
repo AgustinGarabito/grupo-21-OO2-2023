@@ -15,4 +15,5 @@ public interface IRiegoAutomaticoService {
 
 	public RiegoModel insertOrUpdate(RiegoAutomatico riego);
 
+	public List<RiegoAutomatico> findActivos(List<RiegoAutomatico> listAux);
 }

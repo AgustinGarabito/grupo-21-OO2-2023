@@ -3,6 +3,7 @@ package com.unla.grupo21OO22023.services.implementation;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.ArrayList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -47,6 +48,29 @@ public class EventoService implements IEventoService{
 	public EventoModel insertOrUpdate(Evento evento) {
 		Evento eventoNew = eventoRepository.save(evento);
 		return modelMapper.map(eventoNew, EventoModel.class);
+	}
+
+	@Override
+	public List<Evento> listAll(String filtro) {
+		if(filtro != null) {
+			List<Evento> listAux2 = eventoRepository.findAll(filtro);
+			return findActivos(listAux2);
+		}
+		List<Evento> listAux = eventoRepository.findAll();
+		return findActivos(listAux);
+	}
+
+	@Override
+	public List<Evento> findActivos(List<Evento> listAux) {
+		List<Evento> list = new ArrayList<Evento>();
+		
+		for(Evento e : listAux) {
+			if(e.getDispositivo().isActivo()) {
+				list.add(e);
+			}
+		}
+		
+		return list;
 	}
 	
 

@@ -20,7 +20,7 @@ import com.unla.grupo21OO22023.services.IEventoService;
 import com.unla.grupo21OO22023.services.IRiegoAutomaticoService;
 
 @Controller
-@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("/riego")
 public class RiegoAutomaticoController {
 
@@ -39,7 +39,7 @@ public class RiegoAutomaticoController {
 	@GetMapping("")
 	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.RIEGO_INDEX);
-		mAV.addObject("riegos", riegoService.getAll());
+		mAV.addObject("riegos", riegoService.findActivos(riegoService.getAll()));
 		return mAV;
 	}
 
@@ -70,21 +70,13 @@ public class RiegoAutomaticoController {
 		return mAV;
 	}
 
-	// EDITAR
+	// EDITAR Y BAJA LOGICA
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@PostMapping("/update")
-	public RedirectView update(@ModelAttribute("riego") RiegoAutomatico riego) { // RiegoModel riegoModel
+	public RedirectView update(@ModelAttribute("riego") RiegoAutomatico riego) {
 		RiegoAutomatico riegoOld = riegoService.findById(riego.getId());
 		riego.setCreatedAt(riegoOld.getCreatedAt());
 		riegoService.insertOrUpdate(riego);
-		return new RedirectView(ViewRouteHelper.RIEGO_ROOT);
-	}
-
-	// BAJA LOGICA
-	@PostMapping("/delete/{id}")
-	public RedirectView delete(@PathVariable("id") int id) {
-		RiegoAutomatico riego = riegoService.findById(id);
-		riego.setActivo(false);
 		return new RedirectView(ViewRouteHelper.RIEGO_ROOT);
 	}
 

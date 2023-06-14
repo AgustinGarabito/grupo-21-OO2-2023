@@ -1,7 +1,11 @@
 package com.unla.grupo21OO22023.controllers;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +23,7 @@ import com.unla.grupo21OO22023.services.IEventoService;
 import com.unla.grupo21OO22023.services.IRiegoAutomaticoService;
 
 @Controller
-@PreAuthorize("hasRole('ROLE_AUDITOR')")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("/evento")
 public class EventoController {
 
@@ -32,10 +36,14 @@ public class EventoController {
 	private IRiegoAutomaticoService riegoService;
 
 	// INDEX
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
 	@GetMapping("")
-	public ModelAndView index() {
+	public ModelAndView index(@Param("filtro") String filtro) {
+		List<Evento> lista = eventoService.listAll(filtro);
+		
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EVENTO_INDEX);
-		mAV.addObject("eventos", eventoService.getAll());
+		mAV.addObject("eventos", lista);
+		mAV.addObject("filtro", filtro);
 		return mAV;
 	}
 

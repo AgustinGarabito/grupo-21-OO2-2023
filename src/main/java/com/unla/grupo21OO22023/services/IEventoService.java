@@ -19,4 +19,8 @@ public interface IEventoService {
 	public Evento findByFechaAndHora(LocalDate fecha, LocalTime hora);
 	
 	public EventoModel insertOrUpdate(Evento evento);
+	
+	public List<Evento> listAll(String filtro);
+	
+	public List<Evento> findActivos(List<Evento> listAux);
 }

@@ -22,6 +22,8 @@ public class HomeController {
 		return modelAndView;
 	}
 
+	
+	
 	@GetMapping("/")
 	public RedirectView redirectToHomeIndex() {
 		return new RedirectView(ViewRouteHelper.ROUTE);

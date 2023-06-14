@@ -52,6 +52,15 @@ public class Evento {
 		this.fecha = fecha;
 		this.hora = hora;
 	}
+	
+	public Evento(String descripcion, DispositivoIOT dispositivo, LocalDate fecha, LocalTime hora) {
+		super();
+		this.descripcion = descripcion;
+		this.dispositivo = dispositivo;
+		this.fecha = fecha;
+		this.hora = hora;
+		
+	}
 
 	// GET AND SET
 	public int getId() {
@@ -108,12 +117,5 @@ public class Evento {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
-	}
-	
-	
-	
-	
-	
-	
-	
+	}	
 }

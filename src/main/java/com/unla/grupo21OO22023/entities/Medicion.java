@@ -19,20 +19,16 @@ public abstract class Medicion {
 	// ATRIBUTOS
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	protected  int id;
 	
-	private LocalTime hora;
-	private LocalDate fecha;
+	protected  LocalTime hora;
+	protected  LocalDate fecha;
 	
 	@CreationTimestamp
-	private LocalDateTime createdAt;
+	protected  LocalDateTime createdAt;
 
 	@UpdateTimestamp
-	private LocalDateTime updatedAt;
-
-	public int getId() {
-		return id;
-	}
+	protected  LocalDateTime updatedAt;
 	
 	// CONSTRUCTOR
 	public Medicion() {
@@ -47,6 +43,10 @@ public abstract class Medicion {
 	}
 
 	// GET AND SET
+	public int getId() {
+		return id;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}

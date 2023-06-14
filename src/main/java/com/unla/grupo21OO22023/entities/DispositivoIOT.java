@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,20 +13,20 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "dispositivoiot")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class DispositivoIOT {
 
 	// ATRIBUTOS
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	protected  int id;
 	
-	private String nombre;
+	protected  String nombre;
 	
-	private int nroSector;
+	protected  int nroSector;
 	
-	private boolean activo;
+	protected  boolean activo;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -35,17 +34,24 @@ public abstract class DispositivoIOT {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
+	// SET EVENTOS
+	
+	
+	// CONSTRUCTOR
 	public DispositivoIOT() {
 		
 	}
 	
-	// CONSTRUCTOR
 	public DispositivoIOT(int id, String nombre, int nroSector) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.nroSector = nroSector;
 		this.activo = true;
+	}
+	
+	public DispositivoIOT(int id) {
+		this.id = id;
 	}
 
 	// GET AND SET
