@@ -18,11 +18,7 @@ public class ViewRouteHelper {
 	public final static String ALUMBRADO_UPDATE = "alumbrado/update";
 	public final static String ALUMBRADO_LIST = "alumbrado/listaAlumbrado";
 	public final static String ALUMBRADOYEVENTO_LIST = "alumbrado/listaEventosAlumbrado";
-	
-	
-	//EVENTO
-	public final static String EVENTO_INDEX = "evento/index";
-	
+		
 	//MEDICION
 	public final static String MEDICION_INDEX = "medicion/listaMediciones";
 	
@@ -34,7 +30,7 @@ public class ViewRouteHelper {
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
 	public final static String ALUMBRADO_ROOT = "/alumbrado";
-	public final static String DISPOSITIVO_ROOT = "/dispositivo";
+
 	public final static String EVENTO_ROOT = "/alumbrado/eventos";
 	public final static String MEDICION_ROOT = "/medicion";
 	

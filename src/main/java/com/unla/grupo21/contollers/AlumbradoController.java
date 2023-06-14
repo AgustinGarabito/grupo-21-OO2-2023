@@ -1,6 +1,7 @@
 package com.unla.grupo21.contollers;
 
 import java.util.List;
+
 import java.util.ArrayList;
 
 import org.modelmapper.ModelMapper;
@@ -10,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -139,16 +141,15 @@ public class AlumbradoController {
 		
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ALUMBRADOYEVENTO_LIST);
 		List<Medicion> medicion = medicionService.getAll();
-		List<Evento> lista2 = new ArrayList();
+		List<Evento> lista2 = new ArrayList<>();
 		
 		for(Medicion m: medicion) {
 			if(m instanceof MedicionAlumbrado && m!= null) {
 				lista2.add(m.eventoAlumbrado());
-			}
-			
+			}			
 		}
 		
-		
+				
 		modelo.addAttribute("listaEventos", lista2);	
 		modelo.addAttribute("palabraClave", palabraClave);
 		return mAV;
