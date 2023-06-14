@@ -12,9 +12,8 @@ import com.unla.grupo21.repositories.IMedicionRepository;
 import com.unla.grupo21.services.IMedicionService;
 
 @Service("medicionService")
-public class MedicionService implements IMedicionService{
-	
-	
+public class MedicionService implements IMedicionService {
+
 	@Autowired
 	@Qualifier("medicionRepository")
 	private IMedicionRepository medicionRepository;
@@ -31,8 +30,13 @@ public class MedicionService implements IMedicionService{
 		return medicionRepository.findById(id);
 	}
 
+	/////////////////////////
+	public List<Medicion> listAll(String palabraClave) {
+		if (palabraClave != null) {
+			return medicionRepository.findAll(palabraClave);
+		}
+		return medicionRepository.findAll();
+	}
+	////////////////
 
-
-
-	
 }

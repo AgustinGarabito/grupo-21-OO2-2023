@@ -125,9 +125,9 @@ public class AlumbradoController {
 	
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
 	@GetMapping("/eventos")
-	public ModelAndView index2(Model modelo) {
+	public ModelAndView index2(Model modelo, @Param("palabraClave") String palabraClave) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ALUMBRADOYEVENTO_LIST);
-		List<Medicion> medicion = medicionService.getAll();
+		List<Medicion> medicion = medicionService.listAll(palabraClave);
 		List<Evento> listaEventos = new ArrayList<>();
 		Evento evento = new Evento();
 		

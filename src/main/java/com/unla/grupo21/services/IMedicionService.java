@@ -3,7 +3,6 @@ package com.unla.grupo21.services;
 import java.util.List;
 
 import com.unla.grupo21.entities.Medicion;
-import com.unla.grupo21.entities.MedicionAlumbrado;
 
 
 public interface IMedicionService {
@@ -13,7 +12,7 @@ public interface IMedicionService {
 	public Medicion findById(int id);
 	
 
-	
+	public List<Medicion> listAll(String palabraClave);
 
 
 }

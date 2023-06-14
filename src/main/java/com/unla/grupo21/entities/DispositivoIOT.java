@@ -127,7 +127,7 @@ public abstract class DispositivoIOT {
 
 	@Override
 	public String toString() {
-		return "DispositivoIOT: " + nombre + ", nroSector=" + nroSector + "";
+		return  nombre;
 	}
 
 
