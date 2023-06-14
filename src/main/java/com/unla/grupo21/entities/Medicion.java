@@ -1,7 +1,12 @@
 package com.unla.grupo21.entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -27,6 +32,12 @@ public abstract class Medicion {
 	protected DispositivoIOT dispositivoIOT;
 	protected LocalDate fecha;
 	protected LocalTime hora;
+	
+	@CreationTimestamp
+	private LocalDateTime createdAt;
+
+	@UpdateTimestamp
+	private LocalDateTime updatedAt;
 	
 	public Medicion() {}
 	
@@ -67,8 +78,25 @@ public abstract class Medicion {
 	public void setHora(LocalTime hora) {
 		this.hora = hora;
 	}
+		
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+
+	public abstract Evento medicionDispositivoIOT();
 	
-	
-	public abstract Evento eventoAlumbrado();
 
 }

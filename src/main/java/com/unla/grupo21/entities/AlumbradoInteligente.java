@@ -1,6 +1,11 @@
 package com.unla.grupo21.entities;
 
 
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Entity;
 
 
@@ -9,6 +14,12 @@ public class AlumbradoInteligente extends DispositivoIOT{
 	
 	private int valorMinimo;
 	private int valorMaximo;
+	
+	@CreationTimestamp
+	private LocalDateTime createdAt;
+
+	@UpdateTimestamp
+	private LocalDateTime updatedAt;
 	
 	
 	public AlumbradoInteligente() {}
@@ -34,11 +45,26 @@ public class AlumbradoInteligente extends DispositivoIOT{
 	public void setValorMaximo(int valorMaximo) {
 		this.valorMaximo = valorMaximo;
 	}
-
 	
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
 	public boolean prenderAlumbrado(int valorMaximo) {
 		boolean resultado = false;
-		if(this.valorMaximo >= 50) {
+		if(valorMaximo >= 50) {
 			resultado = true;
 		}
 		return resultado;
@@ -46,7 +72,7 @@ public class AlumbradoInteligente extends DispositivoIOT{
 	
 	public boolean apagarAlumbrado(int valorMinimo) {
 		boolean resultado = false;
-		if(this.valorMinimo <= 20) {
+		if(valorMinimo <= 20) {
 			resultado = true;
 		}
 		return resultado;

@@ -14,6 +14,8 @@ import com.unla.grupo21.entities.Evento;
 @Repository("eventoRepository")
 public interface IEventoRepository extends JpaRepository<Evento, Serializable>{
 	
+	public abstract Evento findById(int id);
+	
 	public abstract Evento findByDescripcion(String descripcion);
 
 	public abstract Evento findByFechaAndHora(LocalDate fecha, LocalTime hora);

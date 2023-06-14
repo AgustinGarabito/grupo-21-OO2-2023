@@ -32,6 +32,12 @@ public class Evento {
 	private LocalDate fecha;
 	private LocalTime hora;
 
+	
+	@CreationTimestamp
+	private LocalDateTime createdAt;
+
+	@UpdateTimestamp
+	private LocalDateTime updatedAt;
 
 	public Evento() {}
 
@@ -93,6 +99,22 @@ public class Evento {
 
 	public void setHora(LocalTime hora) {
 		this.hora = hora;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	

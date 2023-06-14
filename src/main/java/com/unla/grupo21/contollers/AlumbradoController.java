@@ -21,11 +21,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo21.entities.AlumbradoInteligente;
-import com.unla.grupo21.entities.DispositivoIOT;
 import com.unla.grupo21.entities.Evento;
 import com.unla.grupo21.entities.Medicion;
 import com.unla.grupo21.entities.MedicionAlumbrado;
 import com.unla.grupo21.helpers.ViewRouteHelper;
+import com.unla.grupo21.models.EventoModel;
 import com.unla.grupo21.services.IDispositivoIOTService;
 import com.unla.grupo21.services.IEventoService;
 import com.unla.grupo21.services.IMedicionService;
@@ -51,8 +51,6 @@ public class AlumbradoController {
 	@Qualifier("medicionService")
 	private IMedicionService medicionService;
 	
-	
-
 	private ModelMapper modelMapper = new ModelMapper();
 
 	
@@ -127,26 +125,27 @@ public class AlumbradoController {
 	
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
 	@GetMapping("/eventos")
-	public ModelAndView index2(Model modelo, @Param("palabraClave") String palabraClave) {
-		List<Evento> lista = eventoService.listAll(palabraClave);	
-		
+	public ModelAndView index2(Model modelo) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ALUMBRADOYEVENTO_LIST);
 		List<Medicion> medicion = medicionService.getAll();
-		List<Evento> lista2 = new ArrayList<>();
+		List<Evento> listaEventos = new ArrayList<>();
+		Evento evento = new Evento();
 		
-		for(Medicion m: medicion) {
-			if(m instanceof MedicionAlumbrado && m!= null) {
-				lista2.add(m.eventoAlumbrado());
-			}			
-		}
 		
+		for(Medicion med: medicion) {
 				
-		modelo.addAttribute("listaEventos", lista2);	
-		modelo.addAttribute("palabraClave", palabraClave);
+			if(med instanceof MedicionAlumbrado) {
+				listaEventos.add(med.medicionDispositivoIOT());
+				evento=med.medicionDispositivoIOT();
+				if(evento!= null) {
+					eventoService.insertOrUpdate(evento);
+				}					
+			}
+		}
+				
+		modelo.addAttribute("listaEventos", listaEventos);			
 		return mAV;
 	}
-	
-	
 
 	
 	

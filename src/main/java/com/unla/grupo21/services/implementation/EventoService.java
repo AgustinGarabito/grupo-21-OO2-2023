@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.unla.grupo21.entities.DispositivoIOT;
 import com.unla.grupo21.entities.Evento;
 import com.unla.grupo21.models.EventoModel;
 import com.unla.grupo21.repositories.IEventoRepository;
@@ -30,17 +29,17 @@ public class EventoService implements IEventoService{
 
 	@Override
 	public Evento findById(int id) {
-		return eventoRepository.getById(id);
+		return eventoRepository.findById(id);
 	}
 	
-
+	
 	@Override
 	public EventoModel insertOrUpdate(Evento evento) {
 		Evento eventoNew = eventoRepository.save(evento);
 		return modelMapper.map(eventoNew, EventoModel.class);
 	}
-	
 
+	
 	@Override
 	public boolean remove(int id) {
 		try {

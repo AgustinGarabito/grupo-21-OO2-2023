@@ -1,7 +1,11 @@
 package com.unla.grupo21.entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Entity;
 
@@ -10,6 +14,12 @@ public class MedicionAlumbrado extends Medicion{
 	
 	private int valorSensor;
 	private boolean sensorMovimiento;
+	
+	@CreationTimestamp
+	private LocalDateTime createdAt;
+
+	@UpdateTimestamp
+	private LocalDateTime updatedAt;
 	
 	public MedicionAlumbrado() {}
 	
@@ -35,7 +45,25 @@ public class MedicionAlumbrado extends Medicion{
 		this.sensorMovimiento = sensorMovimiento;
 	}
 	
-	public Evento eventoAlumbrado() {
+	
+	
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public Evento medicionDispositivoIOT() {
 		Evento evento = new Evento();
 		if(dispositivoIOT.prenderAlumbrado(this.valorSensor) && this.sensorMovimiento==true) {
 			evento.setDescripcion("Luz Prendida");
@@ -51,5 +79,10 @@ public class MedicionAlumbrado extends Medicion{
 		
 		return evento;
 	}
+	
+	
+	
+	
+	
 
 }
