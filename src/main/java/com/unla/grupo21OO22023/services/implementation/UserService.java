@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,7 +19,7 @@ import com.unla.grupo21OO22023.entities.UserRole;
 import com.unla.grupo21OO22023.repositories.IUserRepository;
 
 @Service("userService")
-public class UserService implements UserDetailsService{
+public class UserService implements UserDetailsService {
 
 	@Autowired
 	@Qualifier("userRepository")
