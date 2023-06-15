@@ -3,7 +3,10 @@ package com.unla.grupo21OO22023.entities;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +17,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "dispositivoiot")
+@SQLDelete(sql = "UPDATE dispositivoiot SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class DispositivoIOT {
 
@@ -26,7 +31,7 @@ public abstract class DispositivoIOT {
 	
 	protected  int nroSector;
 	
-	protected  boolean activo;
+	protected boolean deleted = Boolean.FALSE;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -47,9 +52,18 @@ public abstract class DispositivoIOT {
 		this.id = id;
 		this.nombre = nombre;
 		this.nroSector = nroSector;
-		this.activo = true;
+		
 	}
+		
 	
+	public DispositivoIOT(int id, String nombre, int nroSector, boolean deleted) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.nroSector = nroSector;
+		this.deleted = deleted;
+	}
+
 	public DispositivoIOT(int id) {
 		this.id = id;
 	}
@@ -79,13 +93,7 @@ public abstract class DispositivoIOT {
 		this.nroSector = nroSector;
 	}
 
-	public boolean isActivo() {
-		return activo;
-	}
-
-	public void setActivo(boolean activo) {
-		this.activo = activo;
-	}
+	
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
