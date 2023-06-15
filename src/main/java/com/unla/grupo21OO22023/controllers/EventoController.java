@@ -17,10 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo21OO22023.entities.Evento;
-import com.unla.grupo21OO22023.entities.MedicionRiego;
+//import com.unla.grupo21OO22023.entities.MedicionRiego; 	// RIEGO POST MERGE
 import com.unla.grupo21OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo21OO22023.services.IEventoService;
-import com.unla.grupo21OO22023.services.IRiegoAutomaticoService;
+//import com.unla.grupo21OO22023.services.IRiegoAutomaticoService; // RIEGO POST MERGE
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -31,9 +31,9 @@ public class EventoController {
 	@Qualifier("eventoService")
 	private IEventoService eventoService;
 
-	@Autowired
-	@Qualifier("riegoService")
-	private IRiegoAutomaticoService riegoService;
+	//@Autowired
+	//@Qualifier("riegoService")   					// RIEGO POST MERGE
+	//private IRiegoAutomaticoService riegoService;
 
 	// INDEX
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
@@ -47,7 +47,7 @@ public class EventoController {
 		return mAV;
 	}
 
-	// ----------------------------------RIEGO----------------------------------
+	/* ----------------------------------RIEGO----------------------------------
 	
 	// VER PARTICULAR
 	@GetMapping("/riegos/{id}")
@@ -81,6 +81,6 @@ public class EventoController {
 		return mAV;
 	}
 	
-	// ----------------------------------RIEGO----------------------------------
+	// -------------------------------RIEGO POST MERGE------------------------------- */
 
 }
