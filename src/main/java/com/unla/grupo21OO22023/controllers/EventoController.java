@@ -51,7 +51,7 @@ public class EventoController {
 	@GetMapping("/riegos/{id}")
 	public ModelAndView getEventos(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EVENTO_PARTICULAR);
-		mAV.addObject("eventos", eventoService.findByDispositivo(riegoService.findById(id)));
+		mAV.addObject("eventos", eventoService.findByDispositivoIOT(riegoService.findById(id)));
 		mAV.addObject("medicion", new MedicionRiego());
 		mAV.addObject("idDispositivo", id);
 		return mAV;

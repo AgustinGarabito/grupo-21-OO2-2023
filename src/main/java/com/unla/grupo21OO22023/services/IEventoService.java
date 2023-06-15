@@ -12,7 +12,7 @@ public interface IEventoService {
 
 	public List<Evento> getAll();
 
-	public abstract List<Evento> findByDispositivo(DispositivoIOT dispositivo);
+	public abstract List<Evento> findByDispositivoIOT(DispositivoIOT dispositivoIOT);
 	
 	public Evento findByDescripcion(String descripcion);
 

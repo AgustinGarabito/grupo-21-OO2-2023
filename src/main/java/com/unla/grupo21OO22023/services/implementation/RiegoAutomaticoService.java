@@ -48,7 +48,7 @@ public class RiegoAutomaticoService implements IRiegoAutomaticoService {
 		List<RiegoAutomatico> list = new ArrayList<RiegoAutomatico>();
 
 		for (RiegoAutomatico r : listAux) {
-			if (r.isActivo()) {
+			if (!r.isDeleted()) {
 				list.add(r);
 			}
 		}

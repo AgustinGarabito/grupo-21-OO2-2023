@@ -51,12 +51,12 @@ public class MedicionRiego extends Medicion{
 		Evento e = new Evento();
 		if(var == 1) {
 			e.setDescripcion("Se activo el riego");
-			e.setDispositivo(riego);
+			e.setDispositivoIOT(riego);
 			e.setFecha(LocalDate.now());
 			e.setHora(LocalTime.now());
 		} else  if(var == 2){
 			e.setDescripcion("Se llamo a mantenimiento");
-			e.setDispositivo(riego);
+			e.setDispositivoIOT(riego);
 			e.setFecha(LocalDate.now());
 			e.setHora(LocalTime.now());
 		}

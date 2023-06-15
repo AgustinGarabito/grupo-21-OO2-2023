@@ -14,8 +14,8 @@ public class RiegoAutomatico extends DispositivoIOT {
 
 	}
 
-	public RiegoAutomatico(int id, String nombre, int nroSector, float humedadMinima, float humedadMaxima) {
-		super(id, nombre, nroSector);
+	public RiegoAutomatico(int id, String nombre, int nroSector, float humedadMinima, float humedadMaxima, boolean deleted) {
+		super(id, nombre, nroSector, deleted);
 		this.humedadMinima = humedadMinima;
 		this.humedadMaxima = humedadMaxima;
 	}

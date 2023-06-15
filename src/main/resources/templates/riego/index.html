@@ -29,7 +29,7 @@
 								<th scope="col">NroSector</th>
 								<th scope="col">HumedaMinima</th>
 								<th scope="col">HumedadMaxima</th>
-								<th scope="col">Activo</th>				
+								<th scope="col">Desactivado</th>				
 								<th scope="col">Vista</th>
 							
 							</tr>
@@ -45,7 +45,7 @@
 								
 								<td><span th:text="${riego.humedadMinima}" /></td>
 								<td><span th:text="${riego.humedadMaxima}" /></td>
-								<td><span th:text="${riego.activo}" /></td>
+								<td><span th:text="${riego.deleted}" /></td>
 								
 								<td><a class="btn btn-success" th:href="@{/riego/{id}(id=${riego.id})}" th:text="'EDITAR'" title="Editar"></a>
 								</td>

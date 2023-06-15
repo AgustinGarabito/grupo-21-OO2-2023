@@ -9,7 +9,7 @@ public class EventoModel {
 	
 	private int id;
 	private String descripcion;
-	private DispositivoIOT dispositivo;
+	private DispositivoIOT dispositivoIOT;
 	private LocalDate fecha;
 	private LocalTime hora;
 	
@@ -17,11 +17,11 @@ public class EventoModel {
 		
 	}
 	
-	public EventoModel(int id, String descripcion, DispositivoIOT dispositivo, LocalDate fecha, LocalTime hora) {
+	public EventoModel(int id, String descripcion, DispositivoIOT dispositivoIOT, LocalDate fecha, LocalTime hora) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
-		this.dispositivo = dispositivo;
+		this.dispositivoIOT = dispositivoIOT;
 		this.fecha = fecha;
 		this.hora = hora;
 	}
@@ -42,12 +42,12 @@ public class EventoModel {
 		this.descripcion = descripcion;
 	}
 
-	public DispositivoIOT getDispositivo() {
-		return dispositivo;
+	public DispositivoIOT getDispositivoIOT() {
+		return dispositivoIOT;
 	}
 
-	public void setDispositivo(DispositivoIOT dispositivo) {
-		this.dispositivo = dispositivo;
+	public void setDispositivoIOT(DispositivoIOT dispositivoIOT) {
+		this.dispositivoIOT = dispositivoIOT;
 	}
 
 	public LocalDate getFecha() {
