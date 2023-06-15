@@ -40,8 +40,8 @@ public class EventoService implements IEventoService{
 	}
 
 	@Override
-	public List<Evento> findByDispositivo(DispositivoIOT dispositivo) {
-		return eventoRepository.findByDispositivo(dispositivo);
+	public List<Evento> findByDispositivoIOT(DispositivoIOT dispositivoIOT) {
+		return eventoRepository.findByDispositivoIOT(dispositivoIOT);
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class EventoService implements IEventoService{
 		List<Evento> list = new ArrayList<Evento>();
 		
 		for(Evento e : listAux) {
-			if(e.getDispositivo().isActivo()) {
+			if(e.getDispositivoIOT() != null) {
 				list.add(e);
 			}
 		}

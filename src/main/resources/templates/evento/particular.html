@@ -9,29 +9,14 @@
 
 	<div class="container-fluid p-0">
 		<font face="sans-serif">
-			<br><br>
+
 			<div class="card" style="width: 100%;" font face="sans-serif">
-				<form class="form-inline" th:action="@{evento}">
-						<div class="form-group mb-2">
-							<label>Filtrar: </label>
-						</div>
 
-						<div class="form-group mx-sm-3 mb-2">
-							<input type="text" name="filtro" class="form-control" id="filtro"
-								th:value="${filtro}" placeholder="Ingrese búsqueda">
-						</div>
-						<input type="submit" class="btn btn-info mb-2" value="Buscar">
-						&nbsp;
-						<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">
-
-
-					</form>
-				<br>
 				<div class="card-body">
 					<h3 class="card-title">LISTADO EVENTOS</h3>
 					<br><br>
 					<br><br>					
-					<caption>Lista de Eventos Inteligente</caption>
+					<caption>Lista de Eventos Particular</caption>
 					<table class="table table-sm">
 					
 						<thead class="thead-dark">
@@ -52,7 +37,7 @@
 							<tr th:each="e : ${eventos}">
 								<td><span th:text="${e.descripcion}" /></td>
 								<td><span th:text="${e.id}" /></td>
-								<td><span th:text="${e.dispositivoIOT.nombre}" /></td>
+								<td><span th:text="${e.dispositivoIOT.id}" /></td>
 								<td><span th:text="${e.fecha}" /></td>
 								<td><span th:text="${e.hora}" /></td>
 								
@@ -69,15 +54,18 @@
 		
 		
 		</div>
-		
-		<script type="text/javascript">
-			function limpiarCampos(){
-				window.location='evento';
-			}
-		</script>
-		
-		
 	</body>
 <br><br><br>
-&ensp;&nbsp;<a href="/index"><input type="button" value="HOME" /></a>
+
+		<div class="form-group">
+			<form action="#" th:action="@{/evento/sincronizar/} + ${idDispositivo}" th:object="${medicion}" method="post">
+				<div class="form-group">
+				<label>Humedad: </label>
+				<input type="text" th:field="*{humedadActual}" class="form-control"/>
+				</div>
+				<input type="submit" value="Crear" class="btn btn-success"/>
+			</form>
+		</div>
+
+&ensp;&nbsp;<a class="btn btn-secondary" href="/index"><input type="button" value="HOME" /></a>
 </html>

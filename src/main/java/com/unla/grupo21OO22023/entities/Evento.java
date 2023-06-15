@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -25,8 +27,9 @@ public class Evento {
 	private String descripcion;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name="dispositivoiot_id")
-	private DispositivoIOT dispositivo;
+	private DispositivoIOT dispositivoIOT;
 	
 	
 	private LocalDate fecha;
@@ -43,20 +46,20 @@ public class Evento {
 		
 	}
 
-	public Evento(int id, String descripcion, DispositivoIOT dispositivo, LocalDate fecha, LocalTime hora,
+	public Evento(int id, String descripcion, DispositivoIOT dispositivoIOT, LocalDate fecha, LocalTime hora,
 			LocalDateTime createdAt, LocalDateTime updatedAt) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
-		this.dispositivo = dispositivo;
+		this.dispositivoIOT = dispositivoIOT;
 		this.fecha = fecha;
 		this.hora = hora;
 	}
 	
-	public Evento(String descripcion, DispositivoIOT dispositivo, LocalDate fecha, LocalTime hora) {
+	public Evento(String descripcion, DispositivoIOT dispositivoIOT, LocalDate fecha, LocalTime hora) {
 		super();
 		this.descripcion = descripcion;
-		this.dispositivo = dispositivo;
+		this.dispositivoIOT = dispositivoIOT;
 		this.fecha = fecha;
 		this.hora = hora;
 		
@@ -79,12 +82,12 @@ public class Evento {
 		this.descripcion = descripcion;
 	}
 
-	public DispositivoIOT getDispositivo() {
-		return dispositivo;
+	public DispositivoIOT getDispositivoIOT() {
+		return dispositivoIOT;
 	}
 
-	public void setDispositivo(DispositivoIOT dispositivo) {
-		this.dispositivo = dispositivo;
+	public void setDispositivoIOT(DispositivoIOT dispositivoIOT) {
+		this.dispositivoIOT = dispositivoIOT;
 	}
 
 	public LocalDate getFecha() {

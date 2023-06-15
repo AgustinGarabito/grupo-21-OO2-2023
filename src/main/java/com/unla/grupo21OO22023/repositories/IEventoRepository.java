@@ -15,13 +15,13 @@ import com.unla.grupo21OO22023.entities.Evento;
 @Repository("eventoRepository")
 public interface IEventoRepository extends JpaRepository<Evento, Serializable> {
 	
-	public abstract List<Evento> findByDispositivo(DispositivoIOT dispositivo);
+	public abstract List<Evento> findByDispositivoIOT(DispositivoIOT dispositivoIOT);
 
 	public abstract Evento findByDescripcion(String descripcion);
 
 	public abstract Evento findByFechaAndHora(LocalDate fecha, LocalTime hora);
 
 	@Query("SELECT e FROM Evento e INNER JOIN DispositivoIOT d WHERE"
-			+ "	CONCAT(e.descripcion,e.fecha,e.hora,e.dispositivo)" + "	LIKE %?1%")
+			+ "	CONCAT(e.descripcion,e.fecha,e.hora,e.dispositivoIOT)" + "	LIKE %?1%")
 	public abstract List<Evento> findAll(String filtro);
 }
