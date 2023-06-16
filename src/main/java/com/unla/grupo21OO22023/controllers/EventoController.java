@@ -1,6 +1,8 @@
 package com.unla.grupo21OO22023.controllers;
 
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import com.unla.grupo21OO22023.entities.Evento;
 import com.unla.grupo21OO22023.entities.MedicionRiego;
 import com.unla.grupo21OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo21OO22023.services.IEventoService;
+import com.unla.grupo21OO22023.services.IMedicionService;
 import com.unla.grupo21OO22023.services.IRiegoAutomaticoService;
 
 @Controller
@@ -34,6 +37,10 @@ public class EventoController {
 	@Autowired
 	@Qualifier("riegoService")
 	private IRiegoAutomaticoService riegoService;
+	
+	@Autowired
+	@Qualifier("medicionService")
+	private IMedicionService medicionService;
 
 	// INDEX
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
@@ -61,7 +68,12 @@ public class EventoController {
 	@PostMapping("/sincronizar/{id}")
 	public RedirectView sincronizarEventos(@PathVariable("id") int id, @ModelAttribute("medicion") MedicionRiego m) {
 		RedirectView r = new RedirectView(ViewRouteHelper.EVENTOS_SINGLE + id);
-		m.setRiego(riegoService.findById(id));
+		
+		m.setDispositivoIOT(riegoService.findById(id));
+		m.setFecha(LocalDate.now());
+		m.setHora(LocalTime.now());
+		medicionService.insertOrUpdate(m);
+		
 		Evento e = m.generarEvento();
 		if (e.getDescripcion() != null) {
 			eventoService.insertOrUpdate(e);

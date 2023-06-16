@@ -3,9 +3,6 @@ package com.unla.grupo21OO22023.entities;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class MedicionRiego extends Medicion{
@@ -13,19 +10,19 @@ public class MedicionRiego extends Medicion{
 	// ATRIBUTOS
 	private float humedadActual;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="riego_automatico_id")
-	private RiegoAutomatico riego;
+	//@ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name="riego_automatico_id")
+	//private RiegoAutomatico riego;
 	
 	// CONSTRUCTOR
 	public MedicionRiego() {
 		
 	}
 
-	public MedicionRiego(int id, RiegoAutomatico riego, LocalTime hora, LocalDate fecha, float humedadActual) {
-		super(id, hora, fecha);
+	public MedicionRiego(int id, DispositivoIOT dispositivoIOT, LocalTime hora, LocalDate fecha, float humedadActual) {
+		super(id, hora, fecha, dispositivoIOT);
 		this.humedadActual = humedadActual;
-		this.riego = riego;
+		//this.riego = riego;
 	}
 
 	// GET AND SET
@@ -37,30 +34,34 @@ public class MedicionRiego extends Medicion{
 		this.humedadActual = humedadActual;
 	}
 	
-	public RiegoAutomatico getRiego() {
-		return riego;
-	}
+	//public RiegoAutomatico getRiego() {
+	//	return riego;
+	//}
 
-	public void setRiego(RiegoAutomatico riego) {
-		this.riego = riego;
-	}
+	//public void setRiego(RiegoAutomatico riego) {
+	//	this.riego = riego;
+	//}
 
 	// EVENTO
 	public Evento generarEvento() {
-		int var = riego.verificarEvento(humedadActual);
 		Evento e = new Evento();
-		if(var == 1) {
-			e.setDescripcion("Se activo el riego");
-			e.setDispositivoIOT(riego);
-			e.setFecha(LocalDate.now());
-			e.setHora(LocalTime.now());
-		} else  if(var == 2){
-			e.setDescripcion("Se llamo a mantenimiento");
-			e.setDispositivoIOT(riego);
-			e.setFecha(LocalDate.now());
-			e.setHora(LocalTime.now());
-		}
 		
+		if(getDispositivoIOT() instanceof RiegoAutomatico) {
+			RiegoAutomatico riego = (RiegoAutomatico) getDispositivoIOT();
+			int var = riego.verificarEvento(humedadActual);
+			
+			if(var == 1) {
+				e.setDescripcion("Se activo el riego");
+				e.setDispositivoIOT(riego);
+				e.setFecha(LocalDate.now());
+				e.setHora(LocalTime.now());
+			} else  if(var == 2){
+				e.setDescripcion("Se llamo a mantenimiento");
+				e.setDispositivoIOT(riego);
+				e.setFecha(LocalDate.now());
+				e.setHora(LocalTime.now());
+			}
+		}
 		return e;
 	}
 	
