@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<br>
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Registro de Alumbrado</h1>
+
+				<div class="card-body">
+
+					<form action="#" th:action="@{/alumbrado/update}" th:object="${alumbrado}" method="post">
+						<input type="hidden" th:field="*{id}" />
+						<div class="mb-3">
+							<label class="form-label">Nombre</label>
+							<input type="text"  class="form-control" th:field="*{nombre}" />
+						</div>
+
+
+						<div class="mb-3">
+							<label class="form-label">Sector</label>
+							<input type="number"  class="form-control" th:field="*{nroSector}" required />
+							
+						</div>
+
+						<div class="mb-3">
+							<label class="form-label">Valor Minimo</label>
+						<input type="number"  class="form-control" th:field="*{valorMinimo}" required />
+						</div>
+
+
+						<div class="mb-3">
+							<label class="form-label">Valor Maximo</label>
+							<input type="number"  class="form-control" th:field="*{valorMaximo}" required />						
+						</div>
+						<br>
+						<button type="submit" class="btn btn-success">ACTUALIZAR</button>
+					</form>
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+
+</body>
+
+
+</html>
+
+
+
+
