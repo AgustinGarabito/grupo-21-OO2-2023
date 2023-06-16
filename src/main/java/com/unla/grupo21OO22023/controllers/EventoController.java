@@ -63,7 +63,7 @@ public class EventoController {
 	@PostMapping("/sincronizar/{id}")
 	public RedirectView sincronizarEventos(@PathVariable("id") int id, @ModelAttribute("medicion") MedicionRiego m) {
 		RedirectView r = new RedirectView(ViewRouteHelper.EVENTOS_SINGLE + id);
-		m.setRiego(riegoService.findById(id));
+		m.setDispositivoIOT(riegoService.findById(id));
 		Evento e = m.generarEvento();
 		if (e.getDescripcion() != null) {
 			eventoService.insertOrUpdate(e);
