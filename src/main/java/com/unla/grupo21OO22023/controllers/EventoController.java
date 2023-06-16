@@ -68,13 +68,14 @@ public class EventoController {
 	@PostMapping("/sincronizar/{id}")
 	public RedirectView sincronizarEventos(@PathVariable("id") int id, @ModelAttribute("medicion") MedicionRiego m) {
 		RedirectView r = new RedirectView(ViewRouteHelper.EVENTOS_SINGLE + id);
+		MedicionRiego mNew = new MedicionRiego();
+		mNew.setHumedadActual(m.getHumedadActual());
+		mNew.setDispositivoIOT(riegoService.findById(id));
+		mNew.setFecha(LocalDate.now());
+		mNew.setHora(LocalTime.now());
+		medicionService.insertOrUpdate(mNew);
 		
-		m.setDispositivoIOT(riegoService.findById(id));
-		m.setFecha(LocalDate.now());
-		m.setHora(LocalTime.now());
-		medicionService.insertOrUpdate(m);
-		
-		Evento e = m.generarEvento();
+		Evento e = mNew.generarEvento();
 		if (e.getDescripcion() != null) {
 			eventoService.insertOrUpdate(e);
 		} else {
