@@ -1,6 +1,8 @@
 package com.unla.grupo21OO22023.controllers;
 
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.grupo21OO22023.entities.Evento;
-//import com.unla.grupo21OO22023.entities.MedicionRiego; // RIEGO POST MERGE
+// import com.unla.grupo21OO22023.entities.MedicionRiego;	// RIEGO POST MERGE
 import com.unla.grupo21OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo21OO22023.services.IEventoService;
-//import com.unla.grupo21OO22023.services.IRiegoAutomaticoService; // RIEGO POST MERGE
+import com.unla.grupo21OO22023.services.IMedicionService;
+// import com.unla.grupo21OO22023.services.IRiegoAutomaticoService;	// RIEGO POST MERGE
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -32,8 +35,12 @@ public class EventoController {
 	private IEventoService eventoService;
 
 	//@Autowired
-	//@Qualifier("riegoService") 					// RIEGO POST MERGE
+	//@Qualifier("riegoService")					// RIEGO POST MERGE
 	//private IRiegoAutomaticoService riegoService;
+	
+	@Autowired
+	@Qualifier("medicionService")
+	private IMedicionService medicionService;
 
 	// INDEX
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
@@ -63,8 +70,14 @@ public class EventoController {
 	@PostMapping("/sincronizar/{id}")
 	public RedirectView sincronizarEventos(@PathVariable("id") int id, @ModelAttribute("medicion") MedicionRiego m) {
 		RedirectView r = new RedirectView(ViewRouteHelper.EVENTOS_SINGLE + id);
-		m.setDispositivoIOT(riegoService.findById(id));
-		Evento e = m.generarEvento();
+		MedicionRiego mNew = new MedicionRiego();
+		mNew.setHumedadActual(m.getHumedadActual());
+		mNew.setDispositivoIOT(riegoService.findById(id));
+		mNew.setFecha(LocalDate.now());
+		mNew.setHora(LocalTime.now());
+		medicionService.insertOrUpdate(mNew);
+		
+		Evento e = mNew.generarEvento();
 		if (e.getDescripcion() != null) {
 			eventoService.insertOrUpdate(e);
 		} else {
