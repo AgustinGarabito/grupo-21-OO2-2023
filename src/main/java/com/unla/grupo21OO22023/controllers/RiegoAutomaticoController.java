@@ -39,7 +39,7 @@ public class RiegoAutomaticoController {
 	@GetMapping("")
 	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.RIEGO_INDEX);
-		mAV.addObject("riegos", riegoService.findActivos(riegoService.getAll()));
+		mAV.addObject("riegos", riegoService.getAll());
 		return mAV;
 	}
 

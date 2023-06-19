@@ -1,6 +1,5 @@
 package com.unla.grupo21OO22023.services.implementation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,19 +40,6 @@ public class RiegoAutomaticoService implements IRiegoAutomaticoService {
 	public RiegoModel insertOrUpdate(RiegoAutomatico riego) {
 		RiegoAutomatico riegoNew = riegoRepository.save(riego);
 		return modelMapper.map(riegoNew, RiegoModel.class);
-	}
-
-	@Override
-	public List<RiegoAutomatico> findActivos(List<RiegoAutomatico> listAux) {
-		List<RiegoAutomatico> list = new ArrayList<RiegoAutomatico>();
-
-		for (RiegoAutomatico r : listAux) {
-			if (!r.isDeleted()) {
-				list.add(r);
-			}
-		}
-
-		return list;
 	}
 
 }
