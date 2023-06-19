@@ -22,6 +22,28 @@
 					
 					<li class="nav-item dropdown"><a aria-expanded="false"
 						aria-haspopup="true" class="nav-link dropdown-toggle"
+						data-toggle="dropdown" href="#" id="navbarDropdownBlog"> Alumbrado
+							<!--<span th:text="${username}" />-->
+					</a>
+						<div aria-labelledby="navbarDropdownBlog"
+							class="dropdown-menu dropdown-menu-right">
+
+							<!--
+							<form th:action="@{/logout}" method="post">
+								<input class="dropdown-item" style="cursor: pointer"
+									type="submit" value="Logout" />
+							</form>-->
+
+
+							<a class="dropdown-item" href="/alumbrado">CRUD Alumbrado</a>
+							<a class="dropdown-item" href="/alumbrado/eventos">Evento Alumbrado</a>
+							<a class="dropdown-item" href="/medicion">Mediciones Alumbrado</a>
+						</div>
+					</li>
+					
+					
+					<li class="nav-item dropdown"><a aria-expanded="false"
+						aria-haspopup="true" class="nav-link dropdown-toggle"
 						data-toggle="dropdown" href="#" id="navbarDropdownBlog"> Riego
 							<!--<span th:text="${username}" />-->
 					</a>
