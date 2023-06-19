@@ -10,7 +10,7 @@ Se espera que el TP cuente con los siguientes puntos:
 detectan lugares libres y ocupados por autos.
 
 * **Patricia Palmieri [Alumbrado inteligente :bulb:]:** Sensores de luz que prenden o apagan alumbrado
-según sea necesario.
+según sea necesario. Mi rama es PatriciaP, link: https://github.com/AgustinGarabito/grupo-21-OO2-2023/tree/PatriciaP
 
 * **Agustín Garabito [Cuidado del espacio verde inteligente]:** Sensores de humedad que rieguen
 automáticamente el pasto si la humedad ambiente es baja.
