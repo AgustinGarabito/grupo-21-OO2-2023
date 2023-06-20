@@ -1,5 +1,14 @@
 # Grupo-21-OO2-2023
 
+## Instrucciones para la ejecución del proyecto
+
+1- Crear la base de datos grupo-21-oo2-2023
+2- Descargarse el proyecto y en consola, moverse hasta la carpeta donde se encuentra y ejecutar el comando "mvn clean install"
+3- Configurar el archivo application.yml con el user y la contraseña de su workbench
+4- Ejecutar el proyecto, una vez ejecutado darle a stop para insertar user y userRole a la BD
+5- Ejecutar el script de BD que se encuentra en la branch main
+6- Ahora si, ejecutar el proyecto
+
 ## Sistema de Smart City orientado al predio de la UNLa
 
 Se espera que el TP cuente con los siguientes puntos:
@@ -13,7 +22,7 @@ detectan lugares libres y ocupados por autos.
 según sea necesario. Mi rama es PatriciaP, link: https://github.com/AgustinGarabito/grupo-21-OO2-2023/tree/PatriciaP
 
 * **Agustín Garabito [Cuidado del espacio verde inteligente]:** Sensores de humedad que rieguen
-automáticamente el pasto si la humedad ambiente es baja.
+automáticamente el pasto si la humedad ambiente es baja. Mi rama es AgustinG, link: https://github.com/AgustinGarabito/grupo-21-OO2-2023/tree/AgustinG
 
 * Baños ocupados. Cámaras que detectan cuando un baño está siendo
 higienizado para avisar que no se puede usar.
