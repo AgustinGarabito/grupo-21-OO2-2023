@@ -3,10 +3,15 @@
 ## Instrucciones para la ejecución del proyecto
 
 1- Crear la base de datos grupo-21-oo2-2023
+
 2- Descargarse el proyecto y en consola, moverse hasta la carpeta donde se encuentra y ejecutar el comando "mvn clean install"
+
 3- Configurar el archivo application.yml con el user y la contraseña de su workbench
+
 4- Ejecutar el proyecto, una vez ejecutado darle a stop para insertar user y userRole a la BD
+
 5- Ejecutar el script de BD que se encuentra en la branch main
+
 6- Ahora si, ejecutar el proyecto
 
 ## Sistema de Smart City orientado al predio de la UNLa
