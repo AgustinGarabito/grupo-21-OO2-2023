@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+
+	<div class="container-fluid p-0">
+		<font face="sans-serif">
+
+			<div class="card" style="width: 100%;" font face="sans-serif">
+
+				<div class="card-body">
+					<h3 class="card-title">ALUMBRADO Y EVENTOS - REPORTE</h3>
+
+					<br>
+					<input type="button" class="btn btn-primary" value="ACTUALIZAR" onclick="document.location.reload();"
+					<br><br><br><br>
+					<!--Filtro-->
+					<form class="form-inline" th:action="@{eventos}">
+						<div class="form-group mb-2">
+							<label>Filtrar: </label>
+						</div>
+
+						<div class="form-group mx-sm-3 mb-2">
+							<input type="text" name="palabraClave" class="form-control" id="palabraClave"
+								th:value="${palabraClave}" placeholder="Ingrese búsqueda">
+						</div>
+						<input type="submit" class="btn btn-info mb-2" value="Buscar">
+						&nbsp;
+						<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">
+
+
+					</form>
+					
+					<br>
+					<caption>Eventos Alumbrado Inteligente[valor del sensor]: Luz Prendida >= 50 | Luz Apagada <= 20 </caption>
+					<table class="table table-sm">
+					
+						<thead class="thead-dark">
+
+							<tr>
+								<th scope="col">Dispositivo IOT </th>										
+								<th scope="col">Descripcion</th>
+								<th scope="col">Fecha</th>
+								<th scope="col">Hora</th>
+								
+
+							</tr>
+
+						</thead>
+
+						<tbody>
+
+							<tr th:each="e : ${listaEventos}">
+								<td th:text="${e.dispositivoIOT}"></td>
+								
+								<td th:text="${e.descripcion}"></td>														
+								<td th:text="${e.fecha}"></td>
+								<td th:text="${e.hora}"></td>
+																
+							</tr>
+						</tbody>
+					</table>
+			
+				</div>
+			</div>
+	</div>
+
+<script type="text/javascript">
+	function limpiarCampos(){
+		window.location='eventos';
+	}
+	
+</script>
+
+
+</body>
+<br><br><br>
+&nbsp;&nbsp;<a href="/index"><input type="button" class="btn btn-secondary" value="HOME" /></a>
+
+</html>
