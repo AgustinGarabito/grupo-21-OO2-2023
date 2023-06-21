@@ -106,5 +106,14 @@ public abstract class DispositivoIOT {
 		this.updatedAt = updatedAt;
 	}
 	
+	public String toString() {
+		return  nombre;
+	}
+
+	/*
+	public abstract boolean prenderAlumbrado(int valorMaximo);
+	public abstract boolean apagarAlumbrado(int valorMinimo);*/
+
+	
 	
 }
