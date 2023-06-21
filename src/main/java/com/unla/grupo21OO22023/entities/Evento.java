@@ -64,6 +64,17 @@ public class Evento {
 		this.hora = hora;
 		
 	}
+	
+	
+
+	public Evento(int id, String descripcion, DispositivoIOT dispositivoIOT, LocalDate fecha, LocalTime hora) {
+		this.id = id;
+		this.descripcion = descripcion;
+		this.dispositivoIOT = dispositivoIOT;
+		this.fecha = fecha;
+		this.hora = hora;
+		
+	}
 
 	// GET AND SET
 	public int getId() {
