@@ -3,6 +3,7 @@ package com.unla.grupo21OO22023.controllers;
 import java.util.List;
 import java.util.ArrayList;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.query.Param;
@@ -30,9 +31,9 @@ import com.unla.grupo21OO22023.services.IMedicionService;
 @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
 @RequestMapping("/alumbrado")
 public class AlumbradoController {
-	/*
+	
 	@Autowired
-	@Qualifier("dispositivoIOTService")
+	@Qualifier("dispositivoService")
 	private IDispositivoIOTService dispositivoIOTService;
 
 	@Autowired
@@ -43,7 +44,7 @@ public class AlumbradoController {
 	@Qualifier("medicionService")
 	private IMedicionService medicionService;
 
-	//private ModelMapper modelMapper = new ModelMapper();
+	private ModelMapper modelMapper = new ModelMapper();
 
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@GetMapping("")
@@ -88,13 +89,13 @@ public class AlumbradoController {
 	public RedirectView delete(@PathVariable("id") int id) {
 		dispositivoIOTService.remove(id);
 		return new RedirectView(ViewRouteHelper.ALUMBRADO_ROOT);
-	}*/
+	}
 
 	/* ***************************************** */
 	// EVENTOS
 	/* ***************************************** */
 
-	/*
+	
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
 	@GetMapping("/eventos")
 	public ModelAndView index2(Model modelo, @Param("palabraClave") String palabraClave) {
@@ -119,7 +120,7 @@ public class AlumbradoController {
 		modelo.addAttribute("listaEventos", listaEventos);
 		return mAV;
 	}
-	*/
+	
 	
 
 }

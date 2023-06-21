@@ -100,6 +100,6 @@ public abstract class Medicion {
 	}
 	
 	
-	//public abstract Evento medicionDispositivoIOT();
+	public abstract Evento medicionDispositivoIOT();
 	
 }

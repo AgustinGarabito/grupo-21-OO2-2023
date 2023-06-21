@@ -65,4 +65,9 @@ public class MedicionRiego extends Medicion{
 		return e;
 	}
 	
+	public  Evento medicionDispositivoIOT() {
+		Evento evento = new Evento();
+		return evento;
+	}
+	
 }

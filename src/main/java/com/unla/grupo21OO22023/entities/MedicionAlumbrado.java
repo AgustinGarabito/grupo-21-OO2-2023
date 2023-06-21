@@ -59,24 +59,26 @@ public class MedicionAlumbrado extends Medicion{
 		this.updatedAt = updatedAt;
 	}
 
-/*
+
 	public Evento medicionDispositivoIOT() {
 		Evento evento = new Evento();
 		
-		if(this.sensorMovimiento && dispositivoIOT.prenderAlumbrado(this.valorSensor)) {
+		if(getDispositivoIOT() instanceof AlumbradoInteligente) {
+			AlumbradoInteligente aI = (AlumbradoInteligente) getDispositivoIOT();
+			if(this.sensorMovimiento && aI.prenderAlumbrado(this.valorSensor)) {
 			evento.setDescripcion("Prender Luz");
 			evento.setDispositivoIOT(getDispositivoIOT());
 			evento.setFecha(getFecha());
 			evento.setHora(getHora());
-		}else if(this.sensorMovimiento && dispositivoIOT.apagarAlumbrado(this.valorSensor)) {
+		}else if(this.sensorMovimiento && aI.apagarAlumbrado(this.valorSensor)) {
 			evento.setDescripcion("Apagar Luz");
 			evento.setDispositivoIOT(getDispositivoIOT());
 			evento.setFecha(getFecha());
 			evento.setHora(getHora());
 		}
-	
+		}
 		return evento;
-	}*/
+	}
 	
 
 }

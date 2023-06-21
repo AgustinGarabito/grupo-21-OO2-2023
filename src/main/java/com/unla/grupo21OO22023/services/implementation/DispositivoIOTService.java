@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.unla.grupo21OO22023.entities.DispositivoIOT;
+import com.unla.grupo21OO22023.models.DispositivoIOTModel;
 import com.unla.grupo21OO22023.repositories.IDispositivoIOTRepository;
 import com.unla.grupo21OO22023.services.IDispositivoIOTService;
+import org.modelmapper.ModelMapper;
 
 @Service("dispositivoService")
 public class DispositivoIOTService implements IDispositivoIOTService{
@@ -15,6 +17,8 @@ public class DispositivoIOTService implements IDispositivoIOTService{
 	@Autowired
 	@Qualifier("dispositivoRepository")
 	private IDispositivoIOTRepository dispositivoRepository;
+	
+	private ModelMapper modelMapper = new ModelMapper();
 	
 	@Override
 	public List<DispositivoIOT> getAll() {
@@ -31,6 +35,22 @@ public class DispositivoIOTService implements IDispositivoIOTService{
 		return dispositivoRepository.findByNombre(name);
 	}
 	
+
+	@Override
+	public DispositivoIOTModel insertOrUpdate(DispositivoIOT dispositivoIOT) {
+		DispositivoIOT dispositivoIOTNew = dispositivoRepository.save(dispositivoIOT);
+		return modelMapper.map(dispositivoIOTNew, DispositivoIOTModel.class);
+	}
 	
+
+	@Override
+	public boolean remove(int id) {
+		try {
+			dispositivoRepository.deleteById(id);
+			return true;
+		}catch (Exception e) {
+			return false;
+		}
+	}
 
 }

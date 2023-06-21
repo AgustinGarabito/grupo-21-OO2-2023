@@ -3,6 +3,7 @@ package com.unla.grupo21OO22023.services;
 import java.util.List;
 
 import com.unla.grupo21OO22023.entities.DispositivoIOT;
+import com.unla.grupo21OO22023.models.DispositivoIOTModel;
 
 public interface IDispositivoIOTService {
 
@@ -11,6 +12,11 @@ public interface IDispositivoIOTService {
 	public DispositivoIOT findById(int id);
 
 	public DispositivoIOT findByNombre(String nombre);
+	
+	public DispositivoIOTModel insertOrUpdate(DispositivoIOT dispositivoIOT);
+
+	public boolean remove(int id);
+
 	
 	
 

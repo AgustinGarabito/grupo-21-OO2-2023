@@ -11,12 +11,12 @@ import com.unla.grupo21OO22023.repositories.IMedicionRepository;
 import com.unla.grupo21OO22023.services.IMedicionService;
 
 @Service("medicionService")
-public class MedicionService implements IMedicionService{
+public class MedicionService implements IMedicionService {
 
 	@Autowired
 	@Qualifier("medicionRepository")
 	private IMedicionRepository medicionRepository;
-	
+
 	@Override
 	public List<Medicion> getAll() {
 		return medicionRepository.findAll();
@@ -32,5 +32,14 @@ public class MedicionService implements IMedicionService{
 		medicionRepository.save(medicion);
 		return medicion;
 	}
+
+	/////////////////////////
+	public List<Medicion> listAll(String palabraClave) {
+		if (palabraClave != null) {
+			return medicionRepository.findAll(palabraClave);
+		}
+		return medicionRepository.findAll();
+	}
+	////////////////
 
 }
