@@ -11,5 +11,7 @@ public interface IDispositivoIOTService {
 	public DispositivoIOT findById(int id);
 
 	public DispositivoIOT findByNombre(String nombre);
+	
+	
 
 }

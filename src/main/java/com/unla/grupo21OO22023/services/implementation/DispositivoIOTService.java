@@ -30,5 +30,7 @@ public class DispositivoIOTService implements IDispositivoIOTService{
 	public DispositivoIOT findByNombre(String name) {
 		return dispositivoRepository.findByNombre(name);
 	}
+	
+	
 
 }
