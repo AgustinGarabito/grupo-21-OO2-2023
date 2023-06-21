@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.unla.grupo21OO22023.helpers.ViewRouteHelper;
 import com.unla.grupo21OO22023.services.IMedicionService;
+import org.modelmapper.ModelMapper;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -20,7 +21,7 @@ public class MedicionController {
 	@Qualifier("medicionService")
 	private IMedicionService medicionService;
 
-	//private ModelMapper modelMapper = new ModelMapper();
+	private ModelMapper modelMapper = new ModelMapper();
 
 		
 	@GetMapping("")
