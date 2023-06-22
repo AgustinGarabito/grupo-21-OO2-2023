@@ -76,7 +76,7 @@ public class EventoController {
 		mNew.setHora(LocalTime.now());
 		medicionService.insertOrUpdate(mNew);
 		
-		Evento e = mNew.generarEvento();
+		Evento e = mNew.medicionDispositivoIOT();
 		if (e.getDescripcion() != null) {
 			eventoService.insertOrUpdate(e);
 		} else {
