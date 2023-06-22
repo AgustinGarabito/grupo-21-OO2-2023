@@ -50,7 +50,7 @@ public class AlumbradoController {
 	@GetMapping("")
 	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ALUMBRADO_INDEX);
-		mAV.addObject("listaDispositivos", dispositivoIOTService.getAll());
+		mAV.addObject("listaDispositivos", dispositivoIOTService.listAll());
 		return mAV;
 	}
 

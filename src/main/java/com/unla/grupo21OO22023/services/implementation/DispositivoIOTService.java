@@ -1,10 +1,12 @@
 package com.unla.grupo21OO22023.services.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.unla.grupo21OO22023.entities.AlumbradoInteligente;
 import com.unla.grupo21OO22023.entities.DispositivoIOT;
 import com.unla.grupo21OO22023.models.DispositivoIOTModel;
 import com.unla.grupo21OO22023.repositories.IDispositivoIOTRepository;
@@ -51,6 +53,19 @@ public class DispositivoIOTService implements IDispositivoIOTService{
 		}catch (Exception e) {
 			return false;
 		}
+	}
+	
+	public List<AlumbradoInteligente> listAll() {
+		List<AlumbradoInteligente> lista =  new ArrayList<>();
+		List<DispositivoIOT> d = dispositivoRepository.findAll();
+		
+		for(DispositivoIOT dis: d) {
+			if(dis instanceof AlumbradoInteligente) {
+				AlumbradoInteligente aI = (AlumbradoInteligente) dis;
+				lista.add(aI);
+			}
+		}
+		return lista;
 	}
 
 }
