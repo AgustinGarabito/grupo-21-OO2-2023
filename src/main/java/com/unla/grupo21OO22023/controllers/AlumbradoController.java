@@ -95,7 +95,7 @@ public class AlumbradoController {
 	// EVENTOS
 	/* ***************************************** */
 
-	/*
+	
 	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
 	@GetMapping("/eventos")
 	public ModelAndView index2(Model modelo, @Param("palabraClave") String palabraClave) {
@@ -119,33 +119,8 @@ public class AlumbradoController {
 
 		modelo.addAttribute("listaEventos", listaEventos);
 		return mAV;
-	}*/
+	}
 	
-	/*
-	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_AUDITOR')")
-	@GetMapping("/eventos")
-	public ModelAndView index2(Model modelo, @Param("palabraClave") String palabraClave) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ALUMBRADOYEVENTO_LIST);
-		List<MedicionAlumbrado> medicion = medicionService.listAll();
-		List<Evento> listaEventos = new ArrayList<>();
-		Evento evento = new Evento();
-
-		for (Medicion med : medicion) {
-			if (med instanceof MedicionAlumbrado) {
-				if (med.medicionDispositivoIOT().getDescripcion() != null) {
-					listaEventos.add(med.medicionDispositivoIOT());
-					evento = med.medicionDispositivoIOT();
-
-					eventoService.insertOrUpdate(evento);
-
-				}
-			}
-
-		}
-
-		modelo.addAttribute("listaEventos", listaEventos);
-		return mAV;
-	}*/
 	
 	
 

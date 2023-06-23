@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.unla.grupo21OO22023.entities.Medicion;
+import com.unla.grupo21OO22023.entities.MedicionAlumbrado;
 
 @Repository("medicionRepository")
 public interface IMedicionRepository extends JpaRepository<Medicion, Serializable>{
@@ -20,4 +21,9 @@ public interface IMedicionRepository extends JpaRepository<Medicion, Serializabl
 	+ "	LIKE %?1%")
 	public List<Medicion> findAll(String palabraClave);
 	///////////////////
+	
+	
+	@Query("SELECT a FROM MedicionAlumbrado a")
+	public List<MedicionAlumbrado> listAll();
+	
 }
