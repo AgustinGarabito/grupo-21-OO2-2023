@@ -25,6 +25,7 @@ según sea necesario. Mi rama es PatriciaP, link: https://github.com/AgustinGara
 
 * **Agustín Garabito [Cuidado del espacio verde inteligente]:** Sensores de humedad que rieguen
 automáticamente el pasto si la humedad ambiente es baja. Mi rama es AgustinG, link: https://github.com/AgustinGarabito/grupo-21-OO2-2023/tree/AgustinG
+Mi video se encuentra subido en: https://drive.google.com/drive/folders/1H329h1_FfCubeLHsLM5BETzUjNrcjkYl
 
 2. Se puede asumir que se puede contar con el dispositivo IOT necesario para resolver
 la tarea física de la solución.
