@@ -28,6 +28,7 @@ public class MedicionController {
 	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.MEDICION_INDEX);
 		mAV.addObject("listaMediciones", medicionService.getAll());		
+		//mAV.addObject("listaMediciones", medicionService.listAll());
 		return mAV;
 	}
 	

@@ -7,6 +7,9 @@ import java.time.LocalTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class MedicionAlumbrado extends Medicion{
 	
 	private int valorSensor;
