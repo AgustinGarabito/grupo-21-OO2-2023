@@ -2,14 +2,59 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+	<title>UNLa</title>
+	<!-- Bootstrap core CSS -->
+	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<!-- Custom styles for this template -->
+	<link href="/css/modern-business.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+		integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 </head>
 
 <body>
+
+	<!-- Navigation -->
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/index">HOME</a>
+			<button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+				class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" data-toggle="collapse"
+				type="button"></button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+
+					<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true"
+							class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownBlog">
+							Alumbrado
+							<!--<span th:text="${username}" />-->
+						</a>
+						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item" href="/alumbrado">CRUD Alumbrado</a>
+							<a class="dropdown-item" href="/alumbrado/eventos">Evento Alumbrado</a>
+							<a class="dropdown-item" href="/medicion">Mediciones Alumbrado</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true"
+							class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownBlog">
+							User
+							<span th:text="${username}" />
+						</a>
+						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+							<form th:action="@{/logout}" method="post">
+								<input class="dropdown-item" style="cursor: pointer" type="submit" value="Logout" />
+							</form>
+
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
 
 
 	<div class="container-fluid p-0">
@@ -21,8 +66,11 @@
 					<h3 class="card-title">ALUMBRADO Y EVENTOS - REPORTE</h3>
 
 					<br>
-					<input type="button" class="btn btn-primary" value="ACTUALIZAR" onclick="document.location.reload();"
-					<br><br><br><br>
+											
+					<button onclick="document.location.reload();" class="btn btn-primary">
+						ACTUALIZAR
+					</button>	
+					<br><br><br><br>	
 					<!--Filtro-->
 					<form class="form-inline" th:action="@{eventos}">
 						<div class="form-group mb-2">
@@ -39,51 +87,63 @@
 
 
 					</form>
-					
+
 					<br>
-					<caption>Eventos Alumbrado Inteligente[valor del sensor]: Luz Prendida >= 50 | Luz Apagada <= 20 </caption>
-					<table class="table table-sm">
-					
-						<thead class="thead-dark">
+					<caption>Eventos Alumbrado Inteligente[valor del sensor]: Luz Apagada <= 20 | Luz Prendida >= 50
+							</caption>
+							<table class="table">
 
-							<tr>
-								<th scope="col">Dispositivo IOT </th>										
-								<th scope="col">Descripcion</th>
-								<th scope="col">Fecha</th>
-								<th scope="col">Hora</th>
-								
 
-							</tr>
+								<thead class="thead-dark">
 
-						</thead>
+									<tr>
+										<th scope="col">Dispositivo IOT </th>
+										<th scope="col">Descripcion</th>
+										<th scope="col">Fecha</th>
+										<th scope="col">Hora</th>
 
-						<tbody>
 
-							<tr th:each="e : ${listaEventos}">
-								<td th:text="${e.dispositivoIOT}"></td>
-								
-								<td th:text="${e.descripcion}"></td>														
-								<td th:text="${e.fecha}"></td>
-								<td th:text="${e.hora}"></td>
-																
-							</tr>
-						</tbody>
-					</table>
-			
+									</tr>
+
+								</thead>
+
+								<tbody>
+
+									<tr th:each="e : ${listaEventos}">
+										<td th:text="${e.dispositivoIOT}"></td>
+
+										<td th:text="${e.descripcion}"></td>
+										<td th:text="${e.fecha}"></td>
+										<td th:text="${e.hora}"></td>
+
+									</tr>
+								</tbody>
+							</table>
+
 				</div>
 			</div>
 	</div>
 
-<script type="text/javascript">
-	function limpiarCampos(){
-		window.location='eventos';
-	}
-	
-</script>
+	<script type="text/javascript">
+		function limpiarCampos() {
+			window.location = 'eventos';
+		}
+
+	</script>
+
+
+	<br><br><br><br><br>
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy;
+				Website Grupo 21- OO2 -2023</p>
+		</div>
+	</footer>
+	<!-- Bootstrap core JavaScript -->
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
-<br><br><br>
-&nbsp;&nbsp;<a href="/index"><input type="button" class="btn btn-secondary" value="HOME" /></a>
 
 </html>

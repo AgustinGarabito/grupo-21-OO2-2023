@@ -1,11 +1,63 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>UNLa</title>
+	<!-- Bootstrap core CSS -->
+	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<!-- Custom styles for this template -->
+	<link href="/css/modern-business.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+		integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 </head>
+
+
+
 <body>
+
+	<!-- Navigation -->
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+		<a class="navbar-brand" href="/index">HOME</a>
+			<button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+				class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" data-toggle="collapse"
+				type="button"></button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+
+					<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true"
+							class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownBlog">
+							Alumbrado
+							<!--<span th:text="${username}" />-->
+						</a>
+						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item" href="/alumbrado">CRUD Alumbrado</a>
+							<a class="dropdown-item" href="/alumbrado/eventos">Evento Alumbrado</a>
+							<a class="dropdown-item" href="/medicion">Mediciones Alumbrado</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true"
+							class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdownBlog">
+							User
+							<span th:text="${username}" />
+						</a>
+						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+							<form th:action="@{/logout}" method="post">
+								<input class="dropdown-item" style="cursor: pointer" type="submit" value="Logout" />
+							</form>
+
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
 
 	<div class="container-fluid p-0">
 		<font face="sans-serif">
@@ -16,11 +68,12 @@
 					<h3 class="card-title">CRUD ALUMBRADO</h3>
 					<br><br>
 
-					<a href="/alumbrado/new" class="btn btn-primary">AGREGAR</a>
-					<br><br>					
+					<a href="/alumbrado/new" class="btn btn-primary"><i class="fas fa-lightbulb"></i>&nbsp;AÑADIR
+						ALUMBRADO</a>
+					<br><br><br>
 					<caption>Lista de Alumbrado Inteligente</caption>
-					<table class="table table-sm">
-						
+
+					<table class="table">
 						<thead class="thead-dark">
 
 							<tr>
@@ -28,7 +81,7 @@
 								<th scope="col">Nº Sector</th>
 								<th scope="col">valor Min </th>
 								<th scope="col">Valor Max</th>
-								
+
 								<th scope="col">ACCIONES</th>
 								<th scope="col"></th>
 
@@ -43,10 +96,22 @@
 								<td th:text="${d.nroSector}"></td>
 								<td th:text="${d.valorMinimo}"></td>
 								<td th:text="${d.valorMaximo}"></td>
-	
-								<td><a class="btn btn-success" th:href="@{/alumbrado/} + ${d.id}" th:text="'EDITAR'" title="Editar"></a></td>
-								
-								<td><a class="btn btn-danger" th:href="@{/alumbrado/delete/} + ${d.id}" th:text="'BORRAR'" title="Borrar"></a>
+
+
+
+								<td><a class="btn btn-success" th:href="@{/alumbrado/} + ${d.id}"><i
+											class="fas fa-edit"></i>&nbsp;EDITAR</a></td>
+
+
+
+								<td> <!--<a class="btn btn-danger"
+										th:href="@{/alumbrado/delete/} + ${d.id}"><i
+											class="fas fa-trash-alt"></i>&nbsp;ELIMINAR</a>-->
+
+									<a href="#" onclick="eliminarAlumbrado(this)" class="btn btn-danger"><i class="fas fa-trash-alt"></i>&nbsp;ELIMINAR</a>
+									<form th:action="@{/alumbrado/delete/} + ${d.id}" >
+
+									</form>
 								</td>
 
 							</tr>
@@ -54,11 +119,32 @@
 						</tbody>
 
 					</table>
+
+					<script>
+						function eliminarAlumbrado(elemento) {
+							var ok = confirm("¿Está seguro de eliminar este alumbrado?");
+
+							if (ok) {
+								elemento.nextElementSibling.submit();
+							}
+						}
+					</script>
+
 				</div>
 			</div>
 	</div>
-	</body>
-<br><br><br>
-&ensp;&nbsp;<a href="/index"><input type="button" class="btn btn-secondary" value="HOME" /></a>
+	<br><br>
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy;
+				Website Grupo 21- OO2 -2023</p>
+		</div>
+	</footer>
+	<!-- Bootstrap core JavaScript -->
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
 
 </html>

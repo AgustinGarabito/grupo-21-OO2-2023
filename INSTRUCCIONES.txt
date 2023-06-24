@@ -1,0 +1,12 @@
+
+------------------------------------
+INSTRUCCIONES
+------------------------------------
+
+* Se ejecuta el script BD_Grupo21.sql [para cargar todas las tablas con los datos]
+* Editar application.yml en Spring--> nombre de la BD:  grupo21
+* Editar application.yml en Spring--> usuario: root, password: root[cambiar según corresponda]
+* Ejecutar el proyecto.
+* Navegador: http://localhost:8080/login
+* Usuario: admin -->contraseña: admin
+* Usuario: auditor -->contraseña: auditor
