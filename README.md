@@ -14,6 +14,12 @@
 
 6- Ahora si, ejecutar el proyecto
 
+Las usuarios y contraseñas son:
+
+admin -> admin
+
+auditor -> auditor
+
 ## Sistema de Smart City orientado al predio de la UNLa
 
 Se espera que el TP cuente con los siguientes puntos:
