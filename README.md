@@ -4,7 +4,7 @@
 
 1- Crear la base de datos grupo-21-oo2-2023
 
-2- Descargarse el proyecto y en consola, moverse hasta la carpeta donde se encuentra y ejecutar el comando "mvn clean install"
+2- Descargarse el proyecto (branch TrabajoUnificado) y en consola, moverse hasta la carpeta donde se encuentra y ejecutar el comando "mvn clean install"
 
 3- Configurar el archivo application.yml con el user y la contraseña de su workbench
 
