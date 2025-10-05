@@ -4,7 +4,7 @@
 
 1- Crear la base de datos grupo-21-oo2-2023
 
-2- Descargarse el proyecto (branch AgustinG y PatriciaP) y en consola, moverse hasta la carpeta donde se encuentra y ejecutar el comando "mvn clean install"
+2- Descargarse el proyecto (branch AgustinG) y en consola, moverse hasta la carpeta donde se encuentra y ejecutar el comando "mvn clean install"
 
 3- Configurar el archivo application.yml con el user y la contraseña de su workbench
 
@@ -25,9 +25,6 @@ auditor -> auditor
 Se espera que el TP cuente con los siguientes puntos:
 
 1. Definir una solución de IOT por integrante. Integrantes del grupo con la solución elegida:
-
-* **Patricia Palmieri [Alumbrado inteligente :bulb:]:** Sensores de luz que prenden o apagan alumbrado
-según sea necesario. Mi rama es PatriciaP, link: https://github.com/AgustinGarabito/grupo-21-OO2-2023/tree/PatriciaP
 
 * **Agustín Garabito [Cuidado del espacio verde inteligente]:** Sensores de humedad que rieguen
 automáticamente el pasto si la humedad ambiente es baja. Mi rama es AgustinG, link: https://github.com/AgustinGarabito/grupo-21-OO2-2023/tree/AgustinG
@@ -60,11 +57,4 @@ Se espera que en la plataforma como mínimo pueda:
     eventos en el sistema.
 6. Cerrar sesión
 
-## **Predio de la Universidad dividido por número por sectores**
-
-![imagen_predio](https://github.com/AgustinGarabito/grupo-21-OO2-2023/blob/main/Nro_de_sectores_del_predio.jpg)
-
-## **Diagrama de Clases**
-
-![imagen_predio](https://github.com/AgustinGarabito/grupo-21-OO2-2023/blob/main/DiagramaClasesG21-FINAL.png)
 
